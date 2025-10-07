@@ -23,6 +23,7 @@ export default function InventarioMateriales() {
   const [materiales, setMateriales] = useState<Material[]>([]);
   const [mostrarForm, setMostrarForm] = useState(false);
   const [busqueda, setBusqueda] = useState('');
+  const [cargando, setCargando] = useState(false);
   const [editando, setEditando] = useState<Material | null>(null);
   const [nuevoMaterial, setNuevoMaterial] = useState({
     nombre: '',
