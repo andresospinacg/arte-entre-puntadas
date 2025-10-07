@@ -171,7 +171,7 @@ export default function ProyectosLista() {
       // Cargar logo si existe
       let logoBase64: string | undefined;
       try {
-        const response = await fetch('/logo.webp');
+        const response = await fetch('/logo_arte_entrepuntadas.png');
         const blob = await response.blob();
         logoBase64 = await new Promise<string>((resolve) => {
           const reader = new FileReader();
