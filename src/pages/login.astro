@@ -2,9 +2,9 @@
 // Hacer que esta página sea server-rendered para acceder a cookies
 export const prerender = false;
 
-// Si ya hay una sesión, redirigir al home
+// Si ya hay una sesión, redirigir a la calculadora
 if (Astro.cookies.has('sb-access-token')) {
-  return Astro.redirect('/');
+  return Astro.redirect('/calculadora');
 }
 ---
 

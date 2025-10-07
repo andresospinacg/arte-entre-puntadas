@@ -65,8 +65,8 @@ export const prerender = false;
               console.error('Error al crear perfil:', profileError);
             }
 
-            // Redirigir a la página principal
-            window.location.href = '/';
+            // Redirigir a la calculadora después de iniciar sesión
+            window.location.href = '/calculadora';
           } else {
             // No hay sesión, redirigir al login
             window.location.href = '/login?error=no_session';
