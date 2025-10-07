@@ -21,6 +21,8 @@ import {
   LineElement
 } from 'chart.js';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import { obtenerProyectos } from '../../lib/proyectos-service';
+import { obtenerMateriales } from '../../lib/materiales-service';
 
 // Registrar componentes de Chart.js
 ChartJS.register(
@@ -74,22 +76,39 @@ export default function ReportesMejorados() {
     cargarDatos();
   }, []);
 
-  const cargarDatos = () => {
-    const proyectosGuardados = JSON.parse(localStorage.getItem('proyectos') || '[]');
-    const materialesGuardados = JSON.parse(localStorage.getItem('inventario') || '[]');
+  const cargarDatos = async () => {
+    // Cargar proyectos y materiales de Supabase (por usuario)
+    const proyectosSupabase = await obtenerProyectos();
+    const materialesSupabase = await obtenerMateriales();
     
-    setProyectos(proyectosGuardados);
-    setMateriales(materialesGuardados);
+    // Transformar proyectos al formato esperado
+    const proyectosTransformados = proyectosSupabase.map(p => ({
+      id: p.id,
+      nombre: p.nombre,
+      fecha: p.created_at || new Date().toISOString(),
+      materiales: p.calculo?.materiales,
+      resultado: {
+        precio_final: p.costo_total || 0,
+        subtotal_materiales: p.calculo?.resultado?.subtotal_materiales,
+        mano_obra: p.calculo?.resultado?.mano_obra,
+        utilidad: p.calculo?.resultado?.utilidad,
+        herramientas: p.calculo?.resultado?.herramientas,
+        gastos_indirectos: p.calculo?.resultado?.gastos_indirectos,
+      },
+    }));
+    
+    setProyectos(proyectosTransformados as any);
+    setMateriales(materialesSupabase as any);
 
     // Calcular estadísticas
-    const totalProyectos = proyectosGuardados.length;
-    const valorTotal = proyectosGuardados.reduce((sum: number, p: Proyecto) => 
+    const totalProyectos = proyectosTransformados.length;
+    const valorTotal = proyectosTransformados.reduce((sum: number, p: any) => 
       sum + (p.resultado?.precio_final || 0), 0
     );
     const precioPromedio = totalProyectos > 0 ? valorTotal / totalProyectos : 0;
     
     // Proyecto más rentable
-    const proyectoMasRentable = proyectosGuardados.reduce((max: Proyecto | null, p: Proyecto) => {
+    const proyectoMasRentable = proyectosTransformados.reduce((max: any | null, p: any) => {
       if (!max || (p.resultado?.utilidad || 0) > (max.resultado?.utilidad || 0)) {
         return p;
       }
@@ -97,7 +116,7 @@ export default function ReportesMejorados() {
     }, null);
 
     // Material más caro
-    const materiaMasCara = materialesGuardados.reduce((max: Material | null, m: Material) => {
+    const materiaMasCara = materialesSupabase.reduce((max: any | null, m: any) => {
       if (!max || m.precio > max.precio) {
         return m;
       }
@@ -108,7 +127,7 @@ export default function ReportesMejorados() {
       totalProyectos,
       valorTotal,
       precioPromedio,
-      totalMateriales: materialesGuardados.length,
+      totalMateriales: materialesSupabase.length,
       proyectoMasRentable,
       materiaMasCara,
     });

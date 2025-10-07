@@ -34,105 +34,57 @@ export default function ProyectosLista() {
     try {
       setCargando(true);
       
-      // Intentar cargar de Supabase primero
+      // Cargar de Supabase (datos por usuario)
       const proyectosSupabase = await obtenerProyectos();
       
-      if (proyectosSupabase.length > 0) {
-        // Transformar datos de Supabase al formato del componente
-        const proyectosTransformados = proyectosSupabase.map(p => ({
-          id: p.id,
-          nombre: p.nombre,
-          cliente: p.cliente,
-          fecha: p.created_at || new Date().toISOString(),
-          materiales: p.calculo?.materiales,
-          manoObra: p.calculo?.manoObra,
-          porcentajes: p.calculo?.porcentajes,
-          resultado: p.calculo?.resultado || {
-            costoMateriales: 0,
-            costoManoObra: 0,
-            subtotal: 0,
-            ganancia: 0,
-            precioSugerido: 0,
-            gastosIndirectos: 0,
-            precioFinal: p.costo_total || 0,
-          },
-        }));
-        
-        setProyectos(proyectosTransformados);
-        // Guardar también en localStorage como respaldo
-        localStorage.setItem('proyectos', JSON.stringify(proyectosTransformados));
-      } else {
-        // Si no hay en Supabase, intentar sincronizar desde localStorage
-        const sincronizado = await sincronizarProyectosDesdeLocalStorage();
-        
-        if (sincronizado) {
-          // Recargar desde Supabase después de sincronizar
-          const proyectosActualizados = await obtenerProyectos();
-          const proyectosTransformados = proyectosActualizados.map(p => ({
-            id: p.id,
-            nombre: p.nombre,
-            cliente: p.cliente,
-            fecha: p.created_at || new Date().toISOString(),
-            materiales: p.calculo?.materiales,
-            manoObra: p.calculo?.manoObra,
-            porcentajes: p.calculo?.porcentajes,
-            resultado: p.calculo?.resultado || {
-              costoMateriales: 0,
-              costoManoObra: 0,
-              subtotal: 0,
-              ganancia: 0,
-              precioSugerido: 0,
-              gastosIndirectos: 0,
-              precioFinal: p.costo_total || 0,
-            },
-          }));
-          setProyectos(proyectosTransformados);
-        } else {
-          // Fallback a localStorage si falla Supabase
-          const guardados = JSON.parse(localStorage.getItem('proyectos') || '[]');
-          setProyectos(guardados.reverse());
-        }
-      }
+      // Transformar datos de Supabase al formato del componente
+      const proyectosTransformados = proyectosSupabase.map(p => ({
+        id: p.id,
+        nombre: p.nombre,
+        cliente: p.cliente,
+        fecha: p.created_at || new Date().toISOString(),
+        materiales: p.calculo?.materiales,
+        manoObra: p.calculo?.manoObra,
+        porcentajes: p.calculo?.porcentajes,
+        resultado: p.calculo?.resultado || {
+          costoMateriales: 0,
+          costoManoObra: 0,
+          subtotal: 0,
+          ganancia: 0,
+          precioSugerido: 0,
+          gastosIndirectos: 0,
+          precioFinal: p.costo_total || 0,
+        },
+      }));
+      
+      setProyectos(proyectosTransformados);
     } catch (error) {
       console.error('Error al cargar proyectos:', error);
-      // Fallback a localStorage
-      const guardados = JSON.parse(localStorage.getItem('proyectos') || '[]');
-      setProyectos(guardados.reverse());
+      setProyectos([]);
     } finally {
       setCargando(false);
     }
   };
 
   const eliminarProyecto = async (id: string | number | undefined) => {
-    if (!id) return;
+    if (!id || typeof id !== 'string') return;
     
     if (confirm('¿Estás seguro de eliminar este proyecto?')) {
       try {
         setCargando(true);
         
-        // Eliminar de Supabase si es un ID de string (UUID)
-        if (typeof id === 'string') {
-          const eliminado = await eliminarProyectoSupabase(id);
-          
-          if (eliminado) {
-            const nuevos = proyectos.filter(p => p.id !== id);
-            setProyectos(nuevos);
-            // Actualizar también localStorage
-            localStorage.setItem('proyectos', JSON.stringify(nuevos));
-            
-            if (proyectoSeleccionado?.id === id) {
-              setProyectoSeleccionado(null);
-            }
-          }
-        } else {
-          // Fallback para IDs numéricos antiguos (solo localStorage)
+        // Eliminar de Supabase
+        const eliminado = await eliminarProyectoSupabase(id);
+        
+        if (eliminado) {
           const nuevos = proyectos.filter(p => p.id !== id);
           setProyectos(nuevos);
-          localStorage.setItem('proyectos', JSON.stringify(nuevos.reverse()));
           
           if (proyectoSeleccionado?.id === id) {
             setProyectoSeleccionado(null);
           }
+        } else {
+          alert('Error al eliminar el proyecto. Por favor, intenta nuevamente.');
         }
       } catch (error) {
         console.error('Error al eliminar proyecto:', error);

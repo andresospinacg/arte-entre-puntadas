@@ -41,32 +41,12 @@ export default function InventarioMateriales() {
     try {
       setCargando(true);
       
-      // Intentar cargar de Supabase primero
+      // Cargar de Supabase (datos por usuario)
       const materialesSupabase = await obtenerMateriales();
-      
-      if (materialesSupabase.length > 0) {
-        setMateriales(materialesSupabase);
-        // Guardar también en localStorage como respaldo
-        localStorage.setItem('inventario', JSON.stringify(materialesSupabase));
-      } else {
-        // Si no hay en Supabase, intentar sincronizar desde localStorage
-        const sincronizado = await sincronizarMaterialesDesdeLocalStorage();
-        
-        if (sincronizado) {
-          // Recargar desde Supabase después de sincronizar
-          const materialesActualizados = await obtenerMateriales();
-          setMateriales(materialesActualizados);
-        } else {
-          // Fallback a localStorage si falla Supabase
-          const guardados = JSON.parse(localStorage.getItem('inventario') || '[]');
-          setMateriales(guardados);
-        }
-      }
+      setMateriales(materialesSupabase);
     } catch (error) {
       console.error('Error al cargar materiales:', error);
-      // Fallback a localStorage
-      const guardados = JSON.parse(localStorage.getItem('inventario') || '[]');
-      setMateriales(guardados);
+      setMateriales([]);
     } finally {
       setCargando(false);
     }
@@ -101,8 +81,6 @@ export default function InventarioMateriales() {
               m.id === editando.id ? actualizado : m
             );
             setMateriales(nuevos);
-            // Actualizar también localStorage
-            localStorage.setItem('inventario', JSON.stringify(nuevos));
           }
         }
         setEditando(null);
@@ -120,8 +98,6 @@ export default function InventarioMateriales() {
         if (nuevo) {
           const nuevos = [...materiales, nuevo];
           setMateriales(nuevos);
-          // Actualizar también localStorage
-          localStorage.setItem('inventario', JSON.stringify(nuevos));
         }
       }
       
@@ -161,21 +137,16 @@ export default function InventarioMateriales() {
       try {
         setCargando(true);
         
-        // Eliminar de Supabase si es un ID de string (UUID)
+        // Eliminar de Supabase
         if (typeof id === 'string') {
           const eliminado = await eliminarMaterialSupabase(id);
           
           if (eliminado) {
             const nuevos = materiales.filter(m => m.id !== id);
             setMateriales(nuevos);
-            // Actualizar también localStorage
-            localStorage.setItem('inventario', JSON.stringify(nuevos));
+          } else {
+            alert('Error al eliminar el material.');
           }
-        } else {
-          // Fallback para IDs numéricos antiguos (solo localStorage)
-          const nuevos = materiales.filter(m => m.id !== id);
-          setMateriales(nuevos);
-          localStorage.setItem('inventario', JSON.stringify(nuevos));
         }
       } catch (error) {
         console.error('Error al eliminar material:', error);
