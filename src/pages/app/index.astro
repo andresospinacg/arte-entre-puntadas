@@ -1,0 +1,22 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import CalculadoraForm from '../components/calculadora/CalculadoraForm';
+---
+
+<DashboardLayout title="Calculadora - Arte Entre Puntadas">
+  <div class="space-y-6">
+    <!-- Header -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h1 class="text-3xl font-bold text-gray-900 flex items-center gap-3">
+        <span class="text-4xl">🧮</span>
+        Calculadora de Precios
+      </h1>
+      <p class="mt-2 text-gray-600">
+        Calcula el precio justo de tu amigurumi considerando todos los costos
+      </p>
+    </div>
+
+    <!-- Calculadora Component -->
+    <CalculadoraForm client:load />
+  </div>
+</DashboardLayout>

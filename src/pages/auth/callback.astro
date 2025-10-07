@@ -1,0 +1,92 @@
+---
+// Hacer que esta página sea server-rendered
+export const prerender = false;
+
+// Página de callback después de autenticación con Google
+import { supabase } from '../../lib/supabase';
+
+// Esta página maneja el callback de OAuth
+// Supabase redirige aquí después de autenticar con Google
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autenticando...</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body class="bg-gradient-to-br from-dark-950 via-dark-900 to-dark-950 min-h-screen">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="text-center">
+      <div class="flex justify-center mb-4">
+        <svg class="animate-spin h-12 w-12 text-primary-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-bold text-white mb-2">Completando autenticación...</h1>
+      <p class="text-gray-400">Serás redirigido en un momento</p>
+    </div>
+  </div>
+
+  <script>
+    import { supabase } from '../../lib/supabase';
+
+    // Procesar el callback de autenticación
+    async function procesarCallback() {
+      try {
+        // Obtener el hash de la URL (contiene el token)
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const accessToken = hashParams.get('access_token');
+        const refreshToken = hashParams.get('refresh_token');
+
+        if (accessToken) {
+          // Supabase ya maneja esto automáticamente, pero verificamos la sesión
+          const { data: { session }, error } = await supabase.auth.getSession();
+          
+          if (error) {
+            console.error('Error al obtener sesión:', error);
+            window.location.href = '/login?error=auth';
+            return;
+          }
+
+          if (session?.user) {
+            // Crear o actualizar perfil de usuario en la tabla usuarios
+            const { error: profileError } = await supabase
+              .from('usuarios')
+              .upsert({
+                id: session.user.id,
+                email: session.user.email,
+                nombre: session.user.user_metadata?.full_name || session.user.user_metadata?.name,
+                updated_at: new Date().toISOString(),
+              }, {
+                onConflict: 'id'
+              });
+
+            if (profileError) {
+              console.error('Error al crear perfil:', profileError);
+            }
+
+            // Redirigir a la página principal
+            window.location.href = '/';
+          } else {
+            // No hay sesión, redirigir al login
+            window.location.href = '/login?error=no_session';
+          }
+        } else {
+          // No hay token, redirigir al login
+          window.location.href = '/login?error=no_token';
+        }
+      } catch (error) {
+        console.error('Error en callback:', error);
+        window.location.href = '/login?error=callback';
+      }
+    }
+
+    // Ejecutar cuando cargue la página
+    procesarCallback();
+  </script>
+</body>
+</html>

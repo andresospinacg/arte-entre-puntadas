@@ -1,0 +1,106 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getSession } from 'auth-astro/server';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const session = await getSession(Astro.request);
+
+// Redirigir si no está autenticado
+if (!session) {
+  return Astro.redirect('/auth/login');
+}
+---
+
+<BaseLayout title={title}>
+  <!-- Sidebar -->
+  <div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg">
+      <div class="p-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
+            <span class="text-2xl">🧸</span>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold text-gray-900">Arte Entre</h1>
+            <p class="text-sm text-gray-600">Puntadas</p>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="space-y-2">
+          <a 
+            href="/app" 
+            class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
+          >
+            <span class="text-xl">📊</span>
+            <span class="font-medium">Calculadora</span>
+          </a>
+          
+          <a 
+            href="/app/inventario" 
+            class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
+          >
+            <span class="text-xl">📦</span>
+            <span class="font-medium">Inventario</span>
+          </a>
+          
+          <a 
+            href="/app/proyectos" 
+            class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
+          >
+            <span class="text-xl">📋</span>
+            <span class="font-medium">Proyectos</span>
+          </a>
+          
+          <a 
+            href="/app/reportes" 
+            class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
+          >
+            <span class="text-xl">📈</span>
+            <span class="font-medium">Reportes</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Usuario y Logout -->
+      <div class="absolute bottom-0 w-64 p-6 border-t border-gray-200 bg-white">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 bg-primary-200 rounded-full flex items-center justify-center">
+            <span class="text-primary-700 font-semibold">
+              {session.user?.name?.charAt(0) || 'U'}
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 truncate">
+              {session.user?.name || 'Usuario'}
+            </p>
+            <p class="text-xs text-gray-500 truncate">
+              {session.user?.email}
+            </p>
+          </div>
+        </div>
+        <form action="/api/auth/signout" method="post">
+          <button 
+            type="submit"
+            class="w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+          >
+            Cerrar Sesión
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 overflow-y-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <slot />
+      </div>
+    </main>
+  </div>
+</BaseLayout>

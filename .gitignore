@@ -12,13 +12,33 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
 # environment variables
 .env
+.env.local
 .env.production
+.env.*.local
+
+# vercel
+.vercel
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# VS Code
+.vscode/
+
+# Archivos de sistema
+Thumbs.db
+
+# Documentación interna (excepto README)
+*.md
+!README.md
+
+# Scripts de validación y SQL
+*.sql
+*.js
+!astro.config.mjs
+!tailwind.config.mjs
