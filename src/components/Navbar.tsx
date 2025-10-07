@@ -42,14 +42,21 @@ export default function Navbar() {
             {/* Logo y nombre */}
             <div className="flex items-center space-x-3">
               <a href="/" className="flex items-center space-x-3 group">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-accent-400 rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-200 overflow-hidden">
-                  <img 
-                    src="src/img/logo.svg" 
-                    alt="Arte Entre Puntadas" 
-                    className="w-10 h-10 object-cover"
-                  />
+                <div className="relative">
+                  {/* Efecto de brillo detrás del logo */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 to-warm-400/20 blur-lg group-hover:from-primary-500/30 group-hover:to-warm-500/30 transition-all duration-300"></div>
+                  
+                  {/* Contenedor del logo - más cuadrado */}
+                  <div className="relative w-14 h-14 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:scale-105 group-hover:shadow-xl transition-all duration-300 p-2.5 border border-white/10 shadow-md">
+                    <img 
+                      src="/logo.webp" 
+                      alt="Arte Entre Puntadas" 
+                      className="w-full h-full object-contain drop-shadow-md"
+                    />
+                  </div>
                 </div>
-                <span className="text-xl font-display font-bold text-white hidden sm:block">
+                
+                <span className="text-xl font-display font-bold gradient-text hidden sm:block hover:scale-105 transition-transform duration-200">
                   Arte Entre Puntadas
                 </span>
               </a>

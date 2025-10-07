@@ -24,6 +24,7 @@ interface Proyecto {
 export default function ProyectosLista() {
   const [proyectos, setProyectos] = useState<Proyecto[]>([]);
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState<Proyecto | null>(null);
+  const [cargando, setCargando] = useState(false);
 
   useEffect(() => {
     cargarProyectos();
@@ -31,6 +32,7 @@ export default function ProyectosLista() {
 
   const cargarProyectos = async () => {
     try {
+      setCargando(true);
       
       // Intentar cargar de Supabase primero
       const proyectosSupabase = await obtenerProyectos();
@@ -169,7 +171,7 @@ export default function ProyectosLista() {
       // Cargar logo si existe
       let logoBase64: string | undefined;
       try {
-        const response = await fetch('/logo_arte_entrepuntadas.png');
+        const response = await fetch('/logo.webp');
         const blob = await response.blob();
         logoBase64 = await new Promise<string>((resolve) => {
           const reader = new FileReader();
