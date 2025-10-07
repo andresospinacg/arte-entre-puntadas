@@ -24,7 +24,6 @@ interface Proyecto {
 export default function ProyectosLista() {
   const [proyectos, setProyectos] = useState<Proyecto[]>([]);
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState<Proyecto | null>(null);
-  const [cargando, setCargando] = useState(false);
 
   useEffect(() => {
     cargarProyectos();
@@ -32,7 +31,6 @@ export default function ProyectosLista() {
 
   const cargarProyectos = async () => {
     try {
-      setCargando(true);
       
       // Intentar cargar de Supabase primero
       const proyectosSupabase = await obtenerProyectos();

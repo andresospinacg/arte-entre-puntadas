@@ -17,8 +17,6 @@ import type { Material, ManoDeObra, Porcentajes, ResultadoCalculo } from '../../
 import {
   crearProyecto,
   actualizarProyecto,
-  obtenerProyectoPorId,
-  sincronizarProyectosDesdeLocalStorage
 } from '../../lib/proyectos-service';
 
 interface MaterialInventario {

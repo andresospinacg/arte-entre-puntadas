@@ -48,7 +48,7 @@ export async function obtenerUsuarioActual(): Promise<Usuario | null> {
 async function asegurarUsuarioEnTabla(user: any) {
   try {
     // Verificar si el usuario ya existe
-    const { data: usuarioExistente, error: errorBusqueda } = await supabase
+    const { data: usuarioExistente } = await supabase
       .from('usuarios')
       .select('id')
       .eq('id', user.id)

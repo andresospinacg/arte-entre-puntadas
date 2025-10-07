@@ -6,12 +6,13 @@
 
 @layer base {
   :root {
-    --color-bg-primary: #09090b;
-    --color-bg-secondary: #18181b;
+    --color-bg-primary: #0a0a0a;
+    --color-bg-secondary: #1a1a1a;
     --color-text-primary: #fafafa;
-    --color-text-secondary: #a1a1aa;
-    --color-accent: #facc15;
-    --color-accent-hover: #fde047;
+    --color-text-secondary: #a8a8a8;
+    --color-accent: #f97316;
+    --color-accent-hover: #fb923c;
+    --color-warm: #fbbf24;
   }
   
   * {
@@ -25,6 +26,7 @@
   body {
     @apply bg-dark-950 text-white antialiased;
     @apply font-sans;
+    background: linear-gradient(to bottom, #0a0a0a 0%, #121212 100%);
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -66,7 +68,10 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .nav-link {

@@ -6,8 +6,8 @@ import {
   actualizarMaterial,
   eliminarMaterial as eliminarMaterialSupabase,
   sincronizarMaterialesDesdeLocalStorage,
-  type Material as MaterialSupabase
 } from '../../lib/materiales-service';
+import type { Material as MaterialSupabase } from '../../lib/materiales-service';
 
 interface Material {
   id?: string | number;
@@ -24,7 +24,6 @@ export default function InventarioMateriales() {
   const [mostrarForm, setMostrarForm] = useState(false);
   const [busqueda, setBusqueda] = useState('');
   const [editando, setEditando] = useState<Material | null>(null);
-  const [cargando, setCargando] = useState(false);
   const [nuevoMaterial, setNuevoMaterial] = useState({
     nombre: '',
     tipo: 'hilo',

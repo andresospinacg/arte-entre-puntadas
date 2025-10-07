@@ -42,8 +42,12 @@ export default function Navbar() {
             {/* Logo y nombre */}
             <div className="flex items-center space-x-3">
               <a href="/" className="flex items-center space-x-3 group">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-accent-400 rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-200">
-                  <Calculator className="w-6 h-6 text-dark-950" />
+                <div className="w-10 h-10 bg-gradient-to-br from-primary-400 to-accent-400 rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-200 overflow-hidden">
+                  <img 
+                    src="src/img/logo.svg" 
+                    alt="Arte Entre Puntadas" 
+                    className="w-10 h-10 object-cover"
+                  />
                 </div>
                 <span className="text-xl font-display font-bold text-white hidden sm:block">
                   Arte Entre Puntadas
