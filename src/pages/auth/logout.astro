@@ -1,0 +1,9 @@
+---
+import { cerrarSesion } from '../../lib/supabase';
+
+// Cerrar sesión
+await cerrarSesion();
+
+// Redirigir a login
+return Astro.redirect('/login');
+---

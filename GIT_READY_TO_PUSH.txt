@@ -1,0 +1,137 @@
+# ✅ Configuración Final - Git Listo para Push
+
+## 🎯 Estado Actual
+
+✅ `.gitignore` actualizado para:
+- ❌ Excluir TODOS los archivos `.md` (documentación interna)
+- ✅ Permitir SOLO `README.md`
+- ❌ Excluir archivos `.sql` (scripts de base de datos)
+- ❌ Excluir `validacion-produccion.js` (script de pruebas)
+- ✅ Permitir archivos de configuración `.mjs`
+
+## 📋 Archivos que SE SUBIRÁN
+
+### Código Fuente ✅
+- `src/` (todos los componentes, páginas, layouts)
+- `public/` (logos e imágenes)
+- `package.json` y `package-lock.json`
+- Archivos de configuración:
+  - `astro.config.mjs`
+  - `tailwind.config.mjs`
+  - `tsconfig.json`
+  - `.env.example` (plantilla SIN valores reales)
+
+### Documentación ✅
+- `README.md` (ÚNICO archivo .md que se subirá)
+
+## 📋 Archivos que NO se subirán
+
+### Documentación Interna ❌
+- ❌ `DEPLOY_SIMPLE.md`
+- ❌ `GUIA_PUBLICAR_GITHUB.md`
+- ❌ `COMANDOS_GIT.md`
+- ❌ `PRUEBAS_VALIDACION_PRODUCCION.md`
+- ❌ `CHECKLIST_DEPLOY.md`
+- ❌ `MEJORAS_UX_MODAL_Y_CACHE.md`
+- ❌ `SEGURIDAD_RUTAS_PROTEGIDAS.md`
+- ❌ `SOLUCION_ERROR_FOREIGN_KEY.md`
+- ❌ Todos los demás `.md`
+
+### Scripts y SQL ❌
+- ❌ `SCRIPT_CORREGIR_TABLA_USUARIOS.sql`
+- ❌ `validacion-produccion.js`
+
+### Archivos Sensibles ❌
+- ❌ `.env` (variables de entorno con keys secretas)
+- ❌ `node_modules/` (dependencias)
+- ❌ `.astro/` (archivos generados)
+- ❌ `dist/` (build output)
+
+## 🚀 Comandos para Publicar
+
+Ahora ejecuta esto en PowerShell:
+
+```powershell
+# 1. Ver qué se va a subir (ya ejecutado)
+git status
+
+# 2. Crear commit
+git commit -m "feat: Calculadora web para amigurumis con Supabase y OAuth"
+
+# 3. Configurar remote (si no existe)
+git remote add origin https://github.com/andresospinacg/arte-entre-puntadas.git
+
+# 4. Cambiar a rama main
+git branch -M main
+
+# 5. Subir a GitHub
+git push -u origin main
+```
+
+## ✅ Verificación Final
+
+Después de hacer push, verifica en GitHub que:
+
+### ✅ SÍ aparecen:
+- Carpeta `src/` completa
+- Carpeta `public/` con logos
+- `package.json`
+- `README.md`
+- Archivos de configuración `.mjs`
+
+### ❌ NO aparecen:
+- Archivos `.md` (excepto README)
+- Archivos `.sql`
+- `validacion-produccion.js`
+- `.env`
+- `node_modules/`
+
+## 🔄 Si necesitas modificar el README
+
+El `README.md` SÍ se subirá a GitHub, así que:
+
+1. Edítalo con información pública del proyecto
+2. Incluye instrucciones de instalación
+3. NO incluyas keys secretas o información sensible
+4. Ejemplo de contenido apropiado:
+
+```markdown
+# Arte Entre Puntadas - Calculadora de Amigurumis
+
+Calculadora web profesional para calcular precios de proyectos de amigurumis.
+
+## Características
+
+- 🧮 Cálculo automático de costos
+- 📦 Gestión de inventario de materiales
+- 📊 Reportes y estadísticas
+- 🔐 Autenticación con Google OAuth
+- ☁️ Sincronización en la nube con Supabase
+
+## Instalación
+
+1. Clonar el repositorio
+2. Instalar dependencias: `npm install`
+3. Configurar variables de entorno (ver `.env.example`)
+4. Ejecutar: `npm run dev`
+
+## Tecnologías
+
+- Astro
+- React
+- TypeScript
+- Tailwind CSS
+- Supabase
+```
+
+## 📝 Notas Importantes
+
+1. **Documentación interna:** Todos los archivos `.md` de documentación están excluidos de Git. Esto mantiene tu repositorio limpio y enfocado en el código.
+
+2. **Scripts SQL:** Los scripts de Supabase no se suben porque son específicos de tu instalación. Si necesitas compartirlos, créalos directamente en Supabase Dashboard.
+
+3. **README.md:** Es el ÚNICO `.md` que se sube. Úsalo para documentación pública del proyecto.
+
+---
+
+**¡Listo para hacer push a GitHub! 🚀**

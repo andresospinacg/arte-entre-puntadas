@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react';
-import { onAuthStateChange, type Usuario } from '../lib/supabase';
+import { onAuthStateChange, type Usuario } from '../../lib/supabase';
 
 // Contexto de autenticación
 interface AuthContextType {
@@ -24,7 +24,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
   useEffect(() => {
     // Escuchar cambios en el estado de autenticación
-    const { data: { subscription } } = onAuthStateChange((nuevoUsuario) => {
+    const { data: { subscription } } = onAuthStateChange((nuevoUsuario: Usuario | null) => {
       setUsuario(nuevoUsuario);
       setCargando(false);
     });
