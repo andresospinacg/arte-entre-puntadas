@@ -1,5 +1,4 @@
 import { supabase, obtenerUsuarioActual } from './supabase';
-import type { ResultadoCalculo } from './calculos';
 
 // ==========================================
 // TIPOS

@@ -5,8 +5,7 @@ import {
   Package2, 
   FolderOpen,
   BarChart3,
-  PieChart as PieChartIcon,
-  Calendar,
+  PieChartIcon,
   Award
 } from 'lucide-react';
 import {

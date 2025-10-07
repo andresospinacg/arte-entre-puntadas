@@ -2,9 +2,6 @@
 // Hacer que esta página sea server-rendered
 export const prerender = false;
 
-// Página de callback después de autenticación con Google
-import { supabase } from '../../lib/supabase';
-
 // Esta página maneja el callback de OAuth
 // Supabase redirige aquí después de autenticar con Google
 ---
@@ -40,7 +37,6 @@ import { supabase } from '../../lib/supabase';
         // Obtener el hash de la URL (contiene el token)
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get('access_token');
-        const refreshToken = hashParams.get('refresh_token');
 
         if (accessToken) {
           // Supabase ya maneja esto automáticamente, pero verificamos la sesión

@@ -2,9 +2,6 @@
 // Hacer que esta página sea server-rendered para acceder a cookies
 export const prerender = false;
 
-// Redirigir si ya está autenticado
-import { supabase } from '../lib/supabase';
-
 // Si ya hay una sesión, redirigir al home
 if (Astro.cookies.has('sb-access-token')) {
   return Astro.redirect('/');

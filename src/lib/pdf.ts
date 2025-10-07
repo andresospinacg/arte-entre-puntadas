@@ -38,7 +38,7 @@ export class GeneradorPDF {
     return doc;
   }
 
-  private dibujarEncabezado(doc: jsPDF, datosProyecto: DatosProyecto, logoBase64?: string) {
+  private dibujarEncabezado(doc: jsPDF, _datosProyecto: DatosProyecto, logoBase64?: string) {
     const pageWidth = doc.internal.pageSize.getWidth();
 
     // Fondo decorativo superior
