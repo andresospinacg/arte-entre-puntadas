@@ -18,9 +18,10 @@ import {
   crearProyecto,
   actualizarProyecto,
 } from '../../lib/proyectos-service';
+import { obtenerMateriales, descontarMaterial } from '../../lib/materiales-service';
 
 interface MaterialInventario {
-  id: number;
+  id: string;
   nombre: string;
   tipo: string;
   cantidad: number;
@@ -45,6 +46,7 @@ export default function CalculadoraFormMejorada() {
   const [nombreCliente, setNombreCliente] = useState('');
   const [inventario, setInventario] = useState<MaterialInventario[]>([]);
   const [mostrarSelectorMaterial, setMostrarSelectorMaterial] = useState<number | null>(null);
+  const [materialSeleccionado, setMaterialSeleccionado] = useState<Record<number, MaterialInventario | null>>({});
   const [proyectoId, setProyectoId] = useState<string | number | null>(null);
 
   useEffect(() => {
@@ -52,9 +54,10 @@ export default function CalculadoraFormMejorada() {
     cargarProyectoEditar();
   }, []);
 
-  const cargarInventario = () => {
-    const inv = JSON.parse(localStorage.getItem('inventario') || '[]');
-    setInventario(inv);
+  const cargarInventario = async () => {
+    const materiales = await obtenerMateriales();
+    console.log('Materiales cargados del inventario:', materiales);
+    setInventario(materiales as MaterialInventario[]);
   };
 
   const cargarProyectoEditar = () => {
@@ -90,6 +93,7 @@ export default function CalculadoraFormMejorada() {
   };
 
   const seleccionarMaterialInventario = (numMaterial: number, materialInv: MaterialInventario) => {
+    console.log('Seleccionando material:', numMaterial, materialInv);
     const key = `material_${numMaterial}`;
     setMateriales(prev => ({
       ...prev,
@@ -99,7 +103,81 @@ export default function CalculadoraFormMejorada() {
         nombre: materialInv.nombre,
       },
     }));
+    setMaterialSeleccionado(prev => {
+      const nuevo = {
+        ...prev,
+        [numMaterial]: materialInv,
+      };
+      console.log('Material seleccionado actualizado:', nuevo);
+      return nuevo;
+    });
     setMostrarSelectorMaterial(null);
+  };
+
+  const descontarTodoDelInventario = async () => {
+    const materialesADescontar = Object.entries(materialSeleccionado).filter(([_, material]) => material !== null);
+    
+    if (materialesADescontar.length === 0) {
+      alert('No hay materiales del inventario seleccionados para descontar');
+      return;
+    }
+
+    let confirmaciones: string[] = [];
+    let errores: string[] = [];
+
+    // Procesar cada material seleccionado
+    for (const [numMaterialStr, material] of materialesADescontar) {
+      if (!material) continue;
+
+      const numMaterial = parseInt(numMaterialStr);
+      const key = `material_${numMaterial}`;
+      let cantidadUsada = materiales[key]?.gramos || 0;
+
+      // Para accesorios (material 5), descontar 1 unidad si no hay gramos especificados
+      if (numMaterial === 5 && cantidadUsada === 0) {
+        cantidadUsada = 1;
+      }
+
+      if (cantidadUsada <= 0) {
+        errores.push(`${material.nombre}: No se especificó cantidad`);
+        continue;
+      }
+
+      if (cantidadUsada > material.cantidad) {
+        errores.push(`${material.nombre}: Cantidad insuficiente (disponible: ${material.cantidad}${material.unidad || 'g'})`);
+        continue;
+      }
+
+      try {
+        const materialActualizado = await descontarMaterial(material.id, cantidadUsada);
+        if (materialActualizado) {
+          confirmaciones.push(`${material.nombre}: -${cantidadUsada}${material.unidad || 'g'} (Restante: ${materialActualizado.cantidad}${material.unidad || 'g'})`);
+        } else {
+          errores.push(`${material.nombre}: Error al descontar`);
+        }
+      } catch (error) {
+        console.error(`Error al descontar ${material.nombre}:`, error);
+        errores.push(`${material.nombre}: Error al descontar`);
+      }
+    }
+
+    // Mostrar resultados
+    let mensaje = '';
+    if (confirmaciones.length > 0) {
+      mensaje += '✅ Descontados exitosamente:\n' + confirmaciones.join('\n');
+    }
+    if (errores.length > 0) {
+      if (mensaje) mensaje += '\n\n';
+      mensaje += '❌ Errores:\n' + errores.join('\n');
+    }
+
+    alert(mensaje || 'No se procesó ningún material');
+
+    // Recargar inventario y limpiar selecciones
+    if (confirmaciones.length > 0) {
+      await cargarInventario();
+      setMaterialSeleccionado({});
+    }
   };
 
   const calcularPrecio = (e: React.FormEvent) => {
@@ -265,6 +343,10 @@ export default function CalculadoraFormMejorada() {
   const materialesRelleno = inventario.filter(m => m.tipo === 'relleno');
   const materialesAccesorio = inventario.filter(m => m.tipo === 'accesorio');
 
+  console.log('Inventario total:', inventario.length);
+  console.log('Hilos:', materialesHilo.length, 'Rellenos:', materialesRelleno.length, 'Accesorios:', materialesAccesorio.length);
+  console.log('Materiales seleccionados:', materialSeleccionado);
+
   return (
     <div className="space-y-6">
       <form onSubmit={calcularPrecio} className="space-y-6">
@@ -337,7 +419,7 @@ export default function CalculadoraFormMejorada() {
                 </div>
 
                 {mostrarSelectorMaterial === num && (
-                  <div className="bg-dark-700 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
+                  <div className="bg-dark-700 rounded-lg p-3 max-h-60 overflow-y-auto space-y-1">
                     {materialesHilo.length === 0 ? (
                       <p className="text-xs text-dark-500">No hay hilos en el inventario</p>
                     ) : (
@@ -346,10 +428,13 @@ export default function CalculadoraFormMejorada() {
                           key={mat.id}
                           type="button"
                           onClick={() => seleccionarMaterialInventario(num, mat)}
-                          className="w-full text-left px-2 py-1 text-sm hover:bg-dark-600 rounded flex justify-between"
+                          className="w-full text-left px-2 py-1.5 text-sm hover:bg-dark-600 rounded flex justify-between items-center group"
                         >
-                          <span className="text-white">{mat.nombre}</span>
-                          <span className="text-dark-500">{formatearMoneda(mat.precio)}/100g</span>
+                          <div className="flex flex-col flex-1">
+                            <span className="text-white font-medium">{mat.nombre}</span>
+                            <span className="text-xs text-dark-400">Stock: {mat.cantidad}{mat.unidad || 'g'}</span>
+                          </div>
+                          <span className="text-dark-500 group-hover:text-primary-400 text-xs">{formatearMoneda(mat.precio)}/100g</span>
                         </button>
                       ))
                     )}
@@ -363,6 +448,7 @@ export default function CalculadoraFormMejorada() {
                       step="0.1"
                       placeholder="Gramos usados"
                       className="input-field"
+                      value={materiales[`material_${num}`]?.gramos || ''}
                       onChange={(e) => actualizarMaterial(`material_${num}`, 'gramos', e.target.value)}
                     />
                   </div>
@@ -377,6 +463,16 @@ export default function CalculadoraFormMejorada() {
                     />
                   </div>
                 </div>
+
+                {materialSeleccionado[num] && (
+                  <div className="bg-primary-400/10 border border-primary-400/30 rounded-lg p-2 flex items-center space-x-2">
+                    <Package2 className="w-4 h-4 text-primary-400" />
+                    <div className="text-xs">
+                      <p className="text-primary-400 font-medium">{materialSeleccionado[num]?.nombre}</p>
+                      <p className="text-dark-400">Stock: {materialSeleccionado[num]?.cantidad}g</p>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
 
@@ -396,7 +492,7 @@ export default function CalculadoraFormMejorada() {
               </div>
 
               {mostrarSelectorMaterial === 4 && (
-                <div className="bg-dark-700 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
+                <div className="bg-dark-700 rounded-lg p-3 max-h-60 overflow-y-auto space-y-1">
                   {materialesRelleno.length === 0 ? (
                     <p className="text-xs text-dark-500">No hay rellenos en el inventario</p>
                   ) : (
@@ -405,10 +501,13 @@ export default function CalculadoraFormMejorada() {
                         key={mat.id}
                         type="button"
                         onClick={() => seleccionarMaterialInventario(4, mat)}
-                        className="w-full text-left px-2 py-1 text-sm hover:bg-dark-600 rounded flex justify-between"
+                        className="w-full text-left px-2 py-1.5 text-sm hover:bg-dark-600 rounded flex justify-between items-center group"
                       >
-                        <span className="text-white">{mat.nombre}</span>
-                        <span className="text-dark-500">{formatearMoneda(mat.precio)}/100g</span>
+                        <div className="flex flex-col flex-1">
+                          <span className="text-white font-medium">{mat.nombre}</span>
+                          <span className="text-xs text-dark-400">Stock: {mat.cantidad}{mat.unidad || 'g'}</span>
+                        </div>
+                        <span className="text-dark-500 group-hover:text-primary-400 text-xs">{formatearMoneda(mat.precio)}/100g</span>
                       </button>
                     ))
                   )}
@@ -422,6 +521,7 @@ export default function CalculadoraFormMejorada() {
                     step="0.1"
                     placeholder="Gramos usados"
                     className="input-field"
+                    value={materiales.material_4?.gramos || ''}
                     onChange={(e) => actualizarMaterial('material_4', 'gramos', e.target.value)}
                   />
                 </div>
@@ -436,6 +536,16 @@ export default function CalculadoraFormMejorada() {
                   />
                 </div>
               </div>
+
+              {materialSeleccionado[4] && (
+                <div className="bg-primary-400/10 border border-primary-400/30 rounded-lg p-2 flex items-center space-x-2">
+                  <Package2 className="w-4 h-4 text-primary-400" />
+                  <div className="text-xs">
+                    <p className="text-primary-400 font-medium">{materialSeleccionado[4]?.nombre}</p>
+                    <p className="text-dark-400">Stock: {materialSeleccionado[4]?.cantidad}g</p>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="md:col-span-2 space-y-3">
@@ -454,7 +564,7 @@ export default function CalculadoraFormMejorada() {
               </div>
 
               {mostrarSelectorMaterial === 5 && (
-                <div className="bg-dark-700 rounded-lg p-3 max-h-40 overflow-y-auto space-y-1">
+                <div className="bg-dark-700 rounded-lg p-3 max-h-60 overflow-y-auto space-y-1">
                   {materialesAccesorio.length === 0 ? (
                     <p className="text-xs text-dark-500">No hay accesorios en el inventario</p>
                   ) : (
@@ -463,16 +573,22 @@ export default function CalculadoraFormMejorada() {
                         key={mat.id}
                         type="button"
                         onClick={() => {
+                          seleccionarMaterialInventario(5, mat);
                           setMateriales(prev => ({
                             ...prev,
                             material_5: { costo_directo: mat.precio },
                           }));
                           setMostrarSelectorMaterial(null);
                         }}
-                        className="w-full text-left px-2 py-1 text-sm hover:bg-dark-600 rounded flex justify-between"
+                        className="w-full text-left px-2 py-1.5 text-sm hover:bg-dark-600 rounded transition-colors group"
                       >
-                        <span className="text-white">{mat.nombre}</span>
-                        <span className="text-dark-500">{formatearMoneda(mat.precio)}</span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-white group-hover:text-primary-400 transition-colors">{mat.nombre}</span>
+                          <div className="flex flex-col items-end space-y-0.5">
+                            <span className="text-dark-500">{formatearMoneda(mat.precio)}</span>
+                            <span className="text-xs text-dark-400">Stock: {mat.cantidad}{mat.unidad || 'un'}</span>
+                          </div>
+                        </div>
                       </button>
                     ))
                   )}
@@ -487,6 +603,16 @@ export default function CalculadoraFormMejorada() {
                 className="input-field"
                 onChange={(e) => actualizarMaterial('material_5', 'costo_directo', e.target.value)}
               />
+
+              {materialSeleccionado[5] && (
+                <div className="bg-primary-400/10 border border-primary-400/30 rounded-lg p-2 flex items-center space-x-2">
+                  <Package2 className="w-4 h-4 text-primary-400" />
+                  <div className="text-xs">
+                    <p className="text-primary-400 font-medium">{materialSeleccionado[5]?.nombre}</p>
+                    <p className="text-dark-400">Stock: {materialSeleccionado[5]?.cantidad}{materialSeleccionado[5]?.unidad || 'un'}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -618,13 +744,22 @@ export default function CalculadoraFormMejorada() {
               </div>
             </div>
 
-            <div className="flex space-x-2">
+            <div className="flex flex-wrap gap-2">
               <button
                 onClick={guardarProyecto}
                 className="btn-secondary flex items-center space-x-2"
               >
                 <Save className="w-4 h-4" />
                 <span>{proyectoId ? 'Actualizar' : 'Guardar'}</span>
+              </button>
+              <button
+                onClick={descontarTodoDelInventario}
+                disabled={!Object.values(materialSeleccionado).some(m => m !== null)}
+                className="btn-primary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                title={!Object.values(materialSeleccionado).some(m => m !== null) ? 'Selecciona materiales del inventario primero' : 'Descontar materiales del inventario'}
+              >
+                <Package2 className="w-4 h-4" />
+                <span>Descontar Inventario</span>
               </button>
               <button
                 onClick={exportarPDF}

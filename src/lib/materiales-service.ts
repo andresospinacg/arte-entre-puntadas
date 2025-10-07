@@ -145,6 +145,53 @@ export async function eliminarMaterial(id: string): Promise<boolean> {
 }
 
 /**
+ * Descontar cantidad de un material del inventario
+ */
+export async function descontarMaterial(id: string, cantidadADescontar: number): Promise<Material | null> {
+  try {
+    const usuario = await obtenerUsuarioActual();
+    if (!usuario) {
+      throw new Error('Usuario no autenticado');
+    }
+
+    // Obtener el material actual
+    const { data: materialActual, error: errorConsulta } = await supabase
+      .from('materiales')
+      .select('*')
+      .eq('id', id)
+      .eq('usuario_id', usuario.id)
+      .single();
+
+    if (errorConsulta || !materialActual) {
+      console.error('Error al obtener material:', errorConsulta);
+      throw new Error('Material no encontrado');
+    }
+
+    // Calcular nueva cantidad
+    const nuevaCantidad = Math.max(0, materialActual.cantidad - cantidadADescontar);
+
+    // Actualizar cantidad
+    const { data, error } = await supabase
+      .from('materiales')
+      .update({ cantidad: nuevaCantidad })
+      .eq('id', id)
+      .eq('usuario_id', usuario.id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error al descontar material:', error);
+      throw error;
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error en descontarMaterial:', error);
+    return null;
+  }
+}
+
+/**
  * Sincronizar materiales de localStorage a Supabase (migración única)
  */
 export async function sincronizarMaterialesDesdeLocalStorage(): Promise<boolean> {
