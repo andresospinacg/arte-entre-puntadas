@@ -49,7 +49,7 @@ export default function Navbar() {
                   {/* Contenedor del logo - más cuadrado */}
                   <div className="relative w-14 h-14 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:scale-105 group-hover:shadow-xl transition-all duration-300 p-2.5 border border-white/10 shadow-md">
                     <img 
-                      src="/logo.webp" 
+                      src="/logo_navbar.png" 
                       alt="Arte Entre Puntadas" 
                       className="w-full h-full object-contain drop-shadow-md"
                     />
