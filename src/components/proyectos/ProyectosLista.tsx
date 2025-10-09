@@ -156,7 +156,7 @@ export default function ProyectosLista() {
   const editarProyecto = (proyecto: Proyecto) => {
     // Guardar en sessionStorage para cargar en calculadora
     sessionStorage.setItem('proyectoEditar', JSON.stringify(proyecto));
-    window.location.href = '/calculadora?editar=' + proyecto.id;
+    window.location.href = '/app/calculadora?editar=' + proyecto.id;
   };
 
   if (cargando) {
