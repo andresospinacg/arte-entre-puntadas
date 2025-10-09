@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import { FaStar, FaChartBar, FaCloud } from 'react-icons/fa';
 import { iniciarSesionConGoogle } from '../../lib/supabase';
 
 interface ModalLoginProps {
@@ -113,15 +114,21 @@ export default function ModalLogin({ onClose }: ModalLoginProps) {
             {/* Características */}
             <div className="mt-6 pt-6 border-t border-dark-700 grid grid-cols-3 gap-3 text-center">
               <div className="group">
-                <div className="text-2xl mb-1 group-hover:scale-110 transition-transform">✨</div>
+                <div className="mb-1 flex justify-center">
+                  <FaStar className="w-6 h-6 text-primary-400 group-hover:scale-110 transition-transform" />
+                </div>
                 <p className="text-gray-400 text-xs">Proyectos</p>
               </div>
               <div className="group">
-                <div className="text-2xl mb-1 group-hover:scale-110 transition-transform">📊</div>
+                <div className="mb-1 flex justify-center">
+                  <FaChartBar className="w-6 h-6 text-accent-400 group-hover:scale-110 transition-transform" />
+                </div>
                 <p className="text-gray-400 text-xs">Reportes</p>
               </div>
               <div className="group">
-                <div className="text-2xl mb-1 group-hover:scale-110 transition-transform">💾</div>
+                <div className="mb-1 flex justify-center">
+                  <FaCloud className="w-6 h-6 text-warm-400 group-hover:scale-110 transition-transform" />
+                </div>
                 <p className="text-gray-400 text-xs">En la nube</p>
               </div>
             </div>

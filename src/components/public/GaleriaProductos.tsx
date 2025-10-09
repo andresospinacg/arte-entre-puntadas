@@ -1,28 +1,6 @@
-import { Heart, Star, X, MessageCircle, Instagram, Cookie, User, Bug, Palette, IceCream, Rose, BookMarked, Bird, Baby, Package, Sparkles, Users, UserCircle } from 'lucide-react';
+import { Heart, Star, X, Instagram } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useState } from 'react';
-
-// Helper function para convertir emojis a iconos
-const getIconForEmoji = (emoji: string) => {
-  const iconMap: { [key: string]: any } = {
-    '🏴‍☠️': Cookie,
-    '🐧': User,
-    '🐝': Bug,
-    '🎩': Palette,
-    '🍦': IceCream,
-    '🌹': Rose,
-    '📖': BookMarked,
-    '🐣': Bird,
-    '🦌': Baby,
-    '🐸': BookMarked,
-    '🧸': Baby,
-    '✨': Sparkles,
-    '🐥💼': Package,
-    '💑': Users,
-    '👴': UserCircle,
-  };
-  
-  return iconMap[emoji] || Sparkles;
-};
 
 interface Producto {
   id: number;
@@ -294,7 +272,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   rel="noopener noreferrer"
                   className="btn-primary w-full flex items-center justify-center space-x-2"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <FaWhatsapp className="w-5 h-5" />
                   <span>Hacer Pedido por WhatsApp</span>
                 </a>
                 

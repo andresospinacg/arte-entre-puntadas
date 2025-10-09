@@ -1,4 +1,5 @@
-import { Instagram, MessageCircle, Heart } from 'lucide-react';
+import { Instagram, Heart } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer() {
   const anoActual = new Date().getFullYear();
@@ -40,7 +41,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-dark-800 hover:bg-gradient-to-br hover:from-primary-400 hover:to-primary-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
               >
-                <MessageCircle className="w-5 h-5 text-dark-500 group-hover:text-white transition-colors" />
+                <FaWhatsapp className="w-5 h-5 text-dark-500 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>

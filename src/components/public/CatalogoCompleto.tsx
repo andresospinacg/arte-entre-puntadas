@@ -1,4 +1,5 @@
-import { Heart, Star, Search, X, Instagram, MessageCircle, ShoppingCart } from 'lucide-react';
+import { Heart, Star, Search, X, Instagram, ShoppingCart } from 'lucide-react';
+import { FaWhatsapp, FaHeart } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 interface Producto {
@@ -473,7 +474,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   rel="noopener noreferrer"
                   className="btn-primary w-full flex items-center justify-center space-x-2"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <FaWhatsapp className="w-5 h-5" />
                   <span>Hacer Pedido por WhatsApp</span>
                 </a>
                 
@@ -740,7 +741,11 @@ export default function CatalogoCompleto() {
               </h3>
               <p className="text-dark-400 mb-6">
                 {mostrarSoloFavoritos 
-                  ? 'Marca productos con el ❤️ para guardarlos aquí'
+                  ? (
+                    <span className="flex items-center justify-center gap-2">
+                      Marca productos con el <FaHeart className="inline w-4 h-4 text-accent-400" /> para guardarlos aquí
+                    </span>
+                  )
                   : 'Intenta con otros términos de búsqueda o categoría'
                 }
               </p>
@@ -770,7 +775,7 @@ export default function CatalogoCompleto() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center space-x-2"
               >
-                <MessageCircle className="w-5 h-5" />
+                <FaWhatsapp className="w-5 h-5" />
                 <span>Contactar por WhatsApp</span>
               </a>
               <a

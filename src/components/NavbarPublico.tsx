@@ -1,4 +1,5 @@
-import { Instagram, MessageCircle } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function NavbarPublico() {
   return (
@@ -61,7 +62,7 @@ export default function NavbarPublico() {
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-br from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 rounded-lg transition-all duration-300 text-dark-950 font-semibold"
             >
-              <MessageCircle className="w-4 h-4" />
+              <FaWhatsapp className="w-4 h-4" />
               <span className="text-sm hidden sm:inline">WhatsApp</span>
             </a>
           </div>

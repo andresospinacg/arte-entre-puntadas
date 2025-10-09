@@ -1,4 +1,5 @@
-import { MessageCircle, Instagram, Mail, MapPin } from 'lucide-react';
+import { Instagram, Mail, MapPin } from 'lucide-react';
+import { FaWhatsapp, FaPalette, FaComments, FaBox } from 'react-icons/fa';
 
 export default function ContactoCTA() {
   return (
@@ -27,7 +28,7 @@ export default function ContactoCTA() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3 text-dark-500">
                     <MapPin className="w-5 h-5 text-primary-400" />
-                    <span>Ibagué, Colombia 📍</span>
+                    <span>Ibagué, Colombia</span>
                   </div>
                   <div className="flex items-center space-x-3 text-dark-500">
                     <Instagram className="w-5 h-5 text-accent-400" />
@@ -50,7 +51,7 @@ export default function ContactoCTA() {
                     rel="noopener noreferrer"
                     className="btn-primary flex items-center justify-center space-x-2 group"
                   >
-                    <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     <span>WhatsApp</span>
                   </a>
                   <a 
@@ -70,8 +71,8 @@ export default function ContactoCTA() {
                 <div className="relative z-10 bg-dark-800/50 backdrop-blur-sm border border-dark-700 rounded-2xl p-8">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-4 p-4 bg-dark-700/50 rounded-xl">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-accent-400 rounded-full flex items-center justify-center text-2xl">
-                        🎨
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-accent-400 rounded-full flex items-center justify-center">
+                        <FaPalette className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <div className="font-semibold text-white">Diseño Personalizado</div>
@@ -80,8 +81,8 @@ export default function ContactoCTA() {
                     </div>
 
                     <div className="flex items-center space-x-4 p-4 bg-dark-700/50 rounded-xl">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent-400 to-warm-400 rounded-full flex items-center justify-center text-2xl">
-                        💬
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-400 to-warm-400 rounded-full flex items-center justify-center">
+                        <FaComments className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <div className="font-semibold text-white">Cotización Inmediata</div>
@@ -90,8 +91,8 @@ export default function ContactoCTA() {
                     </div>
 
                     <div className="flex items-center space-x-4 p-4 bg-dark-700/50 rounded-xl">
-                      <div className="w-12 h-12 bg-gradient-to-br from-warm-400 to-primary-400 rounded-full flex items-center justify-center text-2xl">
-                        📦
+                      <div className="w-12 h-12 bg-gradient-to-br from-warm-400 to-primary-400 rounded-full flex items-center justify-center">
+                        <FaBox className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <div className="font-semibold text-white">Envío Seguro</div>
