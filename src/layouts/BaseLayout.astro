@@ -4,12 +4,19 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
 const { 
   title = 'Calculadora de Amigurumis - Arte Entre Puntadas', 
-  description = 'Calcula el precio justo de tus amigurumis con nuestra calculadora profesional'
+  description = 'Calcula el precio justo de tus amigurumis con nuestra calculadora profesional',
+  image = '/logo_navbar.png',
+  type = 'website'
 } = Astro.props;
+
+const siteUrl = 'https://arte-entre-puntadas-whjv.vercel.app';
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!doctype html>
@@ -20,7 +27,30 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Básico -->
     <title>{title}</title>
+    <meta name="author" content="Arte Entre Puntadas" />
+    <meta name="keywords" content="amigurumis, amigurumis personalizados, crochet, tejidos, artesanías, Ibagué, Colombia, calculadora precios, amigurumis precio" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:site_name" content="Arte Entre Puntadas" />
+    <meta property="og:locale" content="es_CO" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImageUrl} />
+    
+    <!-- Tema del navegador -->
+    <meta name="theme-color" content="#f97316" />
   </head>
 
   <body>

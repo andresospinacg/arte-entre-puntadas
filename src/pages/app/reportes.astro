@@ -1,11 +1,13 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navbar from '../components/Navbar';
-import CalculadoraFormMejorada from '../components/calculadora/CalculadoraFormMejorada';
-export const prerender = false; // Hacer que esta página sea server-rendered
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar';
+import ReportesMejorados from '../../components/reportes/ReportesMejorados';
+
+// Proteger esta ruta - Solo usuarios autenticados
+export const prerender = false;
 ---
 
-<BaseLayout title="Calculadora - Arte Entre Puntadas">
+<BaseLayout title="Reportes - Arte Entre Puntadas">
   <Navbar client:load />
   
   <!-- Pantalla de carga inicial -->
@@ -24,34 +26,30 @@ export const prerender = false; // Hacer que esta página sea server-rendered
   <!-- Contenido protegido (oculto inicialmente) -->
   <div id="protected-content" style="display: none;">
     <div class="pt-24 pb-12 px-6">
-      <div class="max-w-6xl mx-auto">
-        <!-- Header -->
+      <div class="max-w-7xl mx-auto">
         <div class="mb-10">
           <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
-            <span class="gradient-text">Calculadora</span> de Precios
+            <span class="gradient-text">Reportes</span> y Estadísticas
           </h1>
           <p class="text-xl text-dark-500">
-            Calcula el precio justo de tus amigurumis de forma profesional
+            Visualiza el desempeño de tu negocio
           </p>
         </div>
 
-        <!-- Formulario -->
-        <CalculadoraFormMejorada client:load />
+        <!-- Componente de reportes mejorados con gráficas -->
+        <ReportesMejorados client:load />
       </div>
     </div>
   </div>
   
   <!-- Verificación de autenticación en el cliente -->
   <script>
-    import { supabase } from '../lib/supabase';
+    import { supabase } from '../../lib/supabase';
     
-    // Verificar autenticación al cargar la página
     async function verificarAuth() {
       const { data: { session } } = await supabase.auth.getSession();
-      
       if (!session) {
         // No hay sesión, abrir modal de login
-        // Mantener el loading visible hasta que se autentique
         setTimeout(() => {
           window.dispatchEvent(new CustomEvent('open-login-modal'));
         }, 100);
@@ -59,7 +57,6 @@ export const prerender = false; // Hacer que esta página sea server-rendered
         // Escuchar cambios de autenticación
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event: string, newSession: any) => {
           if (event === 'SIGNED_IN' && newSession) {
-            // Usuario se autenticó, mostrar contenido
             const loading = document.getElementById('auth-loading');
             const content = document.getElementById('protected-content');
             if (loading) loading.style.display = 'none';
@@ -68,7 +65,6 @@ export const prerender = false; // Hacer que esta página sea server-rendered
           }
         });
       } else {
-        // Hay sesión, mostrar contenido y ocultar loading
         const loading = document.getElementById('auth-loading');
         const content = document.getElementById('protected-content');
         if (loading) loading.style.display = 'none';

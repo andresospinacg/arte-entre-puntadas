@@ -1,172 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Navbar from '../components/Navbar';
+import NavbarPublico from '../components/NavbarPublico';
+import Hero from '../components/public/Hero';
+import GaleriaProductos from '../components/public/GaleriaProductos';
+import Beneficios from '../components/public/Beneficios';
+import ContactoCTA from '../components/public/ContactoCTA';
+import Footer from '../components/public/Footer';
 ---
 
-<BaseLayout title="Calculadora de Amigurumis - Arte Entre Puntadas">
-  <Navbar client:load />
+<BaseLayout 
+  title="Arte Entre Puntadas - Amigurumis Personalizados"
+  description="Creamos amigurumis únicos y personalizados con amor desde Ibagué, Colombia. Cada puntada cuenta una historia especial."
+>
+  <!-- Navbar Público -->
+  <NavbarPublico client:load />
   
   <!-- Hero Section -->
-  <div class="relative pt-32 pb-20 px-6 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-400/10 via-transparent to-accent-400/10"></div>
-    <div class="absolute inset-0">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-primary-400/5 rounded-full blur-3xl animate-float"></div>
-      <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent-400/5 rounded-full blur-3xl animate-float animation-delay-400"></div>
-    </div>
-    
-    <div class="relative max-w-5xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 animate-fade-in-up">
-        <span class="gradient-text">Calcula el precio justo</span><br />
-        <span class="text-white">de tus amigurumis</span>
-      </h1>
-      <p class="text-xl md:text-2xl text-dark-500 mb-10 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-        Herramienta profesional para calcular costos de materiales, mano de obra y márgenes de ganancia de forma precisa.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
-        <a href="/calculadora" class="btn-primary text-lg">
-          Comenzar ahora
-          <span class="ml-2">→</span>
-        </a>
-        <a href="#caracteristicas" class="btn-outline text-lg">
-          Ver características
-        </a>
-      </div>
-    </div>
-  </div>
+  <Hero client:load />
 
-  <!-- Features Section -->
-  <div id="caracteristicas" class="max-w-7xl mx-auto px-6 py-20">
-    <div class="text-center mb-16">
-      <h2 class="section-title">
-        <span class="gradient-text">Características</span> que te encantarán
-      </h2>
-      <p class="text-xl text-dark-500 mt-4">
-        Todo lo que necesitas para gestionar tu negocio de amigurumis
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Feature 1 -->
-      <div class="card-hover group">
-        <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200">
-          <svg class="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3 text-white">Cálculo Preciso de Costos</h3>
-        <p class="text-dark-500">
-          Calcula automáticamente materiales, mano de obra, herramientas y gastos indirectos para obtener el precio justo.
-        </p>
-      </div>
+  <!-- Galería de Productos -->
+  <GaleriaProductos client:load />
 
-      <!-- Feature 2 -->
-      <div class="card-hover group">
-        <div class="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-500 rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200">
-          <svg class="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3 text-white">Gestión de Inventario</h3>
-        <p class="text-dark-500">
-          Administra tus materiales: hilos, rellenos y accesorios. Control de stock y precios actualizados.
-        </p>
-      </div>
+  <!-- Beneficios -->
+  <Beneficios client:load />
 
-      <!-- Feature 3 -->
-      <div class="card-hover group">
-        <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-accent-400 rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200">
-          <svg class="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3 text-white">Historial de Proyectos</h3>
-        <p class="text-dark-500">
-          Guarda todos tus proyectos calculados, edítalos cuando quieras y mantén un registro completo.
-        </p>
-      </div>
-
-      <!-- Feature 4 -->
-      <div class="card-hover group">
-        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200">
-          <svg class="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3 text-white">Exportación a PDF</h3>
-        <p class="text-dark-500">
-          Genera cotizaciones profesionales en PDF con tu logo y toda la información del proyecto.
-        </p>
-      </div>
-
-      <!-- Feature 5 -->
-      <div class="card-hover group">
-        <div class="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200">
-          <svg class="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3 text-white">Reportes y Estadísticas</h3>
-        <p class="text-dark-500">
-          Visualiza tus ventas, proyectos más rentables y tendencias de tu negocio.
-        </p>
-      </div>
-
-      <!-- Feature 6 -->
-      <div class="card-hover group">
-        <div class="w-12 h-12 bg-gradient-to-br from-primary-400 to-accent-500 rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200">
-          <svg class="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3 text-white">100% Responsive</h3>
-        <p class="text-dark-500">
-          Accede desde tu computadora, tablet o móvil. Tu negocio siempre contigo.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA Section -->
-  <div class="relative py-20 px-6 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-primary-400/10 to-accent-400/10"></div>
-    <div class="relative max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
-        <span class="text-white">¿Listo para </span>
-        <span class="gradient-text">valorar tu trabajo</span>
-        <span class="text-white">?</span>
-      </h2>
-      <p class="text-xl text-dark-500 mb-10 max-w-2xl mx-auto">
-        Deja de adivinar precios y comienza a calcular de forma profesional
-      </p>
-      <a href="/calculadora" class="btn-primary text-lg inline-flex items-center space-x-2">
-        <span>Comenzar ahora</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-      </a>
-    </div>
-  </div>
+  <!-- CTA de Contacto -->
+  <ContactoCTA client:load />
 
   <!-- Footer -->
-  <footer class="border-t border-dark-700 py-12 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <p class="text-dark-500">
-            © 2025 <span class="text-white font-semibold">Arte Entre Puntadas</span>
-          </p>
-          <p class="text-dark-500 text-sm mt-1">
-            Calculadora profesional para amigurumis
-          </p>
-        </div>
-        <div class="flex space-x-6">
-          <a href="/calculadora" class="nav-link">Calculadora</a>
-          <a href="/inventario" class="nav-link">Inventario</a>
-          <a href="/proyectos" class="nav-link">Proyectos</a>
-          <a href="/reportes" class="nav-link">Reportes</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer client:load />
 </BaseLayout>
 

@@ -56,7 +56,6 @@ export default function CalculadoraFormMejorada() {
 
   const cargarInventario = async () => {
     const materiales = await obtenerMateriales();
-    console.log('Materiales cargados del inventario:', materiales);
     setInventario(materiales as MaterialInventario[]);
   };
 
@@ -93,7 +92,6 @@ export default function CalculadoraFormMejorada() {
   };
 
   const seleccionarMaterialInventario = (numMaterial: number, materialInv: MaterialInventario) => {
-    console.log('Seleccionando material:', numMaterial, materialInv);
     const key = `material_${numMaterial}`;
     setMateriales(prev => ({
       ...prev,
@@ -103,14 +101,10 @@ export default function CalculadoraFormMejorada() {
         nombre: materialInv.nombre,
       },
     }));
-    setMaterialSeleccionado(prev => {
-      const nuevo = {
-        ...prev,
-        [numMaterial]: materialInv,
-      };
-      console.log('Material seleccionado actualizado:', nuevo);
-      return nuevo;
-    });
+    setMaterialSeleccionado(prev => ({
+      ...prev,
+      [numMaterial]: materialInv,
+    }));
     setMostrarSelectorMaterial(null);
   };
 
@@ -342,10 +336,6 @@ export default function CalculadoraFormMejorada() {
   const materialesHilo = inventario.filter(m => m.tipo === 'hilo');
   const materialesRelleno = inventario.filter(m => m.tipo === 'relleno');
   const materialesAccesorio = inventario.filter(m => m.tipo === 'accesorio');
-
-  console.log('Inventario total:', inventario.length);
-  console.log('Hilos:', materialesHilo.length, 'Rellenos:', materialesRelleno.length, 'Accesorios:', materialesAccesorio.length);
-  console.log('Materiales seleccionados:', materialSeleccionado);
 
   return (
     <div className="space-y-6">
@@ -752,15 +742,15 @@ export default function CalculadoraFormMejorada() {
                 <Save className="w-4 h-4" />
                 <span>{proyectoId ? 'Actualizar' : 'Guardar'}</span>
               </button>
-              <button
-                onClick={descontarTodoDelInventario}
-                disabled={!Object.values(materialSeleccionado).some(m => m !== null)}
-                className="btn-primary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                title={!Object.values(materialSeleccionado).some(m => m !== null) ? 'Selecciona materiales del inventario primero' : 'Descontar materiales del inventario'}
-              >
-                <Package2 className="w-4 h-4" />
-                <span>Descontar Inventario</span>
-              </button>
+              {Object.values(materialSeleccionado).some(m => m !== null) && (
+                <button
+                  onClick={descontarTodoDelInventario}
+                  className="btn-primary flex items-center space-x-2"
+                >
+                  <Package2 className="w-4 h-4" />
+                  <span>Descontar Inventario</span>
+                </button>
+              )}
               <button
                 onClick={exportarPDF}
                 className="btn-outline flex items-center space-x-2"

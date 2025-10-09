@@ -4,7 +4,7 @@ export const prerender = false;
 
 // Si ya hay una sesión, redirigir a la calculadora
 if (Astro.cookies.has('sb-access-token')) {
-  return Astro.redirect('/calculadora');
+  return Astro.redirect('/app/calculadora');
 }
 ---
 

@@ -6,20 +6,31 @@ import LoginModal from './auth/LoginModal';
 interface NavItem {
   name: string;
   href: string;
-  icon: typeof Calculator;
+  icon: typeof Package;
 }
 
-const navItems: NavItem[] = [
-  { name: 'Calculadora', href: '/calculadora', icon: Calculator },
-  { name: 'Inventario', href: '/inventario', icon: Package },
-  { name: 'Proyectos', href: '/proyectos', icon: FolderOpen },
-  { name: 'Reportes', href: '/reportes', icon: BarChart3 },
+// Items del navbar para la aplicación (cuando estás en /app/*)
+const appNavItems: NavItem[] = [
+  { name: 'Calculadora', href: '/app/calculadora', icon: Calculator },
+  { name: 'Inventario', href: '/app/inventario', icon: Package },
+  { name: 'Proyectos', href: '/app/proyectos', icon: FolderOpen },
+  { name: 'Reportes', href: '/app/reportes', icon: BarChart3 },
 ];
+
+// Items del navbar para la landing pública (cuando estás en /)
+const publicNavItems: NavItem[] = [];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
+  
+  // Determinar si estamos en el área de la app
+  const isInApp = currentPath.startsWith('/app');
+  const logoHref = isInApp ? '/app' : '/';
+  
+  // Usar items diferentes según la ubicación
+  const navItems = isInApp ? appNavItems : publicNavItems;
 
   // Escuchar evento para abrir el modal desde otras partes de la app
   useEffect(() => {
@@ -41,7 +52,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo y nombre */}
             <div className="flex items-center space-x-3">
-              <a href="/" className="flex items-center space-x-3 group">
+              <a href={logoHref} className="flex items-center space-x-3 group">
                 <div className="relative">
                   {/* Efecto de brillo detrás del logo */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 to-warm-400/20 blur-lg group-hover:from-primary-500/30 group-hover:to-warm-500/30 transition-all duration-300"></div>

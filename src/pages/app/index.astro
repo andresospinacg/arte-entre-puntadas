@@ -1,22 +1,88 @@
 ---
-import DashboardLayout from '../../layouts/DashboardLayout.astro';
-import CalculadoraForm from '../../components/calculadora/CalculadoraForm.tsx';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar';
+import HeroCalculadora from '../../components/app/HeroCalculadora';
+import CaracteristicasCalculadora from '../../components/app/CaracteristicasCalculadora';
+import CTACalculadora from '../../components/app/CTACalculadora';
+export const prerender = false;
 ---
 
-<DashboardLayout title="Calculadora - Arte Entre Puntadas">
-  <div class="space-y-6">
-    <!-- Header -->
-    <div class="bg-white rounded-lg shadow-sm p-6">
-      <h1 class="text-3xl font-bold text-gray-900 flex items-center gap-3">
-        <img src="/logo.svg" alt="Logo" class="w-10 h-10" />
-        Calculadora de Precios
-      </h1>
-      <p class="mt-2 text-gray-600">
-        Calcula el precio justo de tu amigurumi considerando todos los costos
-      </p>
-    </div>
+<BaseLayout title="Calculadora de Amigurumis - Arte Entre Puntadas">
+  <Navbar client:load />
 
-    <!-- Calculadora Component -->
-    <CalculadoraForm client:load />
-  </div>
-</DashboardLayout>
+  <!-- Hero Section -->
+  <HeroCalculadora client:load />
+
+  <!-- Features Section -->
+  <CaracteristicasCalculadora client:load />
+
+  <!-- CTA Section -->
+  <CTACalculadora client:load />
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto px-6 py-12 border-t border-dark-800">
+    <div class="text-center text-dark-500">
+      <p class="mb-4">© {new Date().getFullYear()} <span class="gradient-text font-semibold">Arte Entre Puntadas</span></p>
+      <p class="text-sm">Calculadora profesional para amigurumis</p>
+      <div class="mt-6 flex justify-center space-x-6">
+        <a href="/app/calculadora" class="hover:text-primary-400 transition-colors">Calculadora</a>
+        <a href="/app/inventario" class="hover:text-primary-400 transition-colors">Inventario</a>
+        <a href="/app/proyectos" class="hover:text-primary-400 transition-colors">Proyectos</a>
+        <a href="/app/reportes" class="hover:text-primary-400 transition-colors">Reportes</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Estilos para animaciones -->
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 400ms;
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 0.6s ease-out;
+    }
+
+    .animation-delay-200 {
+      animation-delay: 200ms;
+      animation-fill-mode: both;
+    }
+
+    .animation-delay-400 {
+      animation-delay: 400ms;
+      animation-fill-mode: both;
+    }
+
+    .section-title {
+      @apply text-4xl md:text-5xl font-display font-bold;
+    }
+
+    .card-hover {
+      @apply card transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+    }
+
+    .shadow-glow {
+      box-shadow: 0 0 20px currentColor;
+    }
+  </style>
+</BaseLayout>

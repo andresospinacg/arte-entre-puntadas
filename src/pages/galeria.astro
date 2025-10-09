@@ -1,0 +1,16 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavbarPublico from '../components/NavbarPublico';
+import CatalogoCompleto from '../components/public/CatalogoCompleto';
+import Footer from '../components/public/Footer';
+---
+
+<BaseLayout 
+  title="Catálogo - Arte Entre Puntadas"
+  description="Explora nuestra colección completa de amigurumis personalizados. Cada pieza única tejida con amor en Ibagué, Colombia."
+  image="/logo_arte_entrepuntadas.png"
+>
+  <NavbarPublico client:load />
+  <CatalogoCompleto client:load />
+  <Footer client:load />
+</BaseLayout>
