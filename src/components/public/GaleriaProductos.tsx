@@ -162,7 +162,7 @@ const productosDestacados: Producto[] = [
   },
   {
     id: 13,
-    nombre: "Abuelo Personalizada",
+    nombre: "Abuelo Personalizado",
     categoria: "Personalizados",
     imagen: "💑",
     imagenReal: "/productos/abuelo-personalizado.jpg",
