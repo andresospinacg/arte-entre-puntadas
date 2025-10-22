@@ -25,7 +25,6 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $45.000",
     descripcion: "Amigurumi de galleta festival tejido a mano",
     detalles: "Llavero único inspirado en el famoso personaje de galleta. Perfecto para llevar contigo a todas partes.",
-    tamano: "8-10 cm",
     materiales: "Algodón 100%, relleno hipoalergénico"
   },
   {
@@ -47,9 +46,8 @@ const todosLosProductos: Producto[] = [
     imagen: "🐝",
     imagenReal: "/productos/abeja-molly.jpg",
     precio: "Desde $15.000",
-    descripcion: "Hermosa abeja con detalles únicos",
-    detalles: "Pequeña abeja dulce perfecta como broche o decoración. Colores vibrantes y acabados impecables.",
-    tamano: "6-8 cm",
+    descripcion: "Adorable llavero de abejita con delicados detalles de rayas y alitas, tamaño perfecto para llaves o bolsos ✨",
+    detalles: "Adorable llavero de abejita con delicados detalles de rayas y alitas, tamaño perfecto para llaves o bolsos. ✨",
     materiales: "Hilo acrílico, fieltro para alas"
   },
   {
@@ -61,7 +59,7 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $85.000",
     descripcion: "Vincent van Gogh clásico perfecto para regalar",
     detalles: "Representación única del famoso pintor con todos sus detalles característicos. Perfecto para amantes del arte. Una pieza de conversación ideal para tu escritorio o estantería.",
-    tamano: "15-18 cm",
+    tamano: "15 cm",
     materiales: "Algodón, accesorios en fieltro"
   },
   {
@@ -85,7 +83,7 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $28.000",
     descripcion: "Hermosa rosa de Shrek con detalles únicos",
     detalles: "La icónica rosa de la película Shrek, tejida con amor. Un regalo romántico y divertido a la vez.",
-    tamano: "20-25 cm con tallo",
+    tamano: "15 cm con tallo",
     materiales: "Algodón satinado, alambre para tallo"
   },
   {
@@ -113,18 +111,6 @@ const todosLosProductos: Producto[] = [
     materiales: "Algodón suave, ojos bordados seguros"
   },
   {
-    id: 13,
-    nombre: "Tu Persona Favorita",
-    categoria: "Personalizados",
-    imagen: "💝",
-    imagenReal: "/productos/mujer-personalizado.jpg",
-    precio: "Desde $80.000",
-    descripcion: "Regala un recuerdo inolvidable con nuestras figuras personalizadas de personas",
-    detalles: "Creamos una figura personalizada de la persona que quieras inmortalizar. Ideal para regalos de cumpleaños, aniversarios o momentos especiales. Envianos una foto y recreamos cada detalle.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
-    materiales: "Algodón premium, detalles personalizados según foto"
-  },
-  {
     id: 15,
     nombre: "Frailejón Ernesto Pérez",
     categoria: "Personajes",
@@ -133,7 +119,6 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $15.000",
     descripcion: "El querido Frailejón Ernesto Pérez de los niños colombianos",
     detalles: "¡El personaje más adorable de la televisión colombiana! Frailejón Ernesto Pérez tejido a mano con todos sus detalles característicos. Perfecto para niños y coleccionistas.",
-    tamano: "18-22 cm",
     materiales: "Algodón verde, fieltro, ojos de seguridad"
   },
   {
@@ -205,7 +190,6 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $25.000",
     descripcion: "Tierno corazón tejido perfecto para regalar amor",
     detalles: "Pequeño corazón adorable con carita feliz. Ideal para San Valentín, aniversarios o cualquier ocasión para expresar amor. Se puede hacer en diferentes colores.",
-    tamano: "8-10 cm",
     materiales: "Algodón suave, ojos bordados"
   },
   {
@@ -215,8 +199,8 @@ const todosLosProductos: Producto[] = [
     imagen: "🍒",
     imagenReal: "/productos/cerezas-obsequio.jpg",
     precio: "Desde $12.000",
-    descripcion: "Lindas cerezas unidas, símbolo de amistad",
-    detalles: "Pareja de cerezas conectadas por su tallo. Representan la unión y amistad. Perfectas para regalar a tu mejor amigo/a o como decoración dulce.",
+    descripcion: "Dos cerezas rojas unidas por su tallito verde tamaño perfecto para llaves o bolsos 🍒",
+    detalles: "Dos cerezas rojas unidas por su tallito verde tamaño perfecto para llaves o bolsos 🍒",
     tamano: "10-12 cm (par)",
     materiales: "Algodón rojo y verde, relleno suave"
   },
@@ -277,7 +261,6 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $30.000",
     descripcion: "Set de 2 ranitas llaveros para parejas enamoradas",
     detalles: "Pareja de ranitas que se complementan. Perfectas para parejas, mejores amigos o hermanos. Cada uno lleva su ranita y siempre están conectados.",
-    tamano: "8-10 cm cada una",
     materiales: "Algodón verde, detalles en fieltro, argolla metálica"
   },
   {
@@ -323,9 +306,8 @@ const todosLosProductos: Producto[] = [
     imagen: "🦷",
     imagenReal: "/productos/llavero-diente.jpg",
     precio: "Desde $15.000",
-    descripcion: "Llavero en forma de diente perfecto para odontólogos",
-    detalles: "Diente sonriente tejido a mano. Regalo ideal para dentistas, estudiantes de odontología o celebrar la caída del primer diente. También disponible versión con alas de hada de los dientes.",
-    tamano: "8-10 cm",
+    descripcion: "Diente sonriente tejido a mano. Regalo ideal para dentistas, estudiantes de odontología o celebrar la caída del primer diente.",
+    detalles: "Diente sonriente tejido a mano. Regalo ideal para dentistas, estudiantes de odontología o celebrar la caída del primer diente.",
     materiales: "Algodón blanco, detalles bordados"
   },
   {
@@ -335,9 +317,8 @@ const todosLosProductos: Producto[] = [
     imagen: "☀️🌍",
     imagenReal: "/productos/llavero-diente-sol-tierra.jpg",
     precio: "Desde $30.000",
-    descripcion: "Trio de llaveros: diente, sol y tierra",
-    detalles: "Set de 3 llaveros educativos y divertidos. Perfecto para niños, estudiantes o amantes de la ciencia y la salud dental.",
-    tamano: "6-8 cm cada uno",
+    descripcion: "Set de 2 llaveros sol y Tierra Diseño tierno con caritas sonrientes que se complementan perfectamente Ideal para parejas, mejores amigos etc.",
+    detalles: "Set de 2 llaveros sol y Tierra Diseño tierno con caritas sonrientes que se complementan perfectamente Ideal para parejas, mejores amigos etc.",
     materiales: "Algodón multicolor, argollas metálicas"
   },
   {
@@ -349,7 +330,6 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $18.000",
     descripcion: "Llavero en forma de lápiz para maestros y estudiantes",
     detalles: "Lápiz tejido con punta y borrador detallados. Regalo perfecto para maestros, profesores, estudiantes o amantes de la papelería.",
-    tamano: "10-12 cm",
     materiales: "Algodón amarillo y negro, detalles en fieltro"
   },
   {
@@ -358,10 +338,10 @@ const todosLosProductos: Producto[] = [
     categoria: "Personajes",
     imagen: "⚽",
     imagenReal: "/productos/messi.jpg",
-    precio: "Desde $80.000",
-    descripcion: "Lionel Messi amigurumi con camiseta Argentina",
-    detalles: "El mejor jugador del mundo en versión amigurumi. Con su camiseta de Argentina número 10 y todos sus rasgos característicos. Para fanáticos del fútbol y de La Pulga.",
-    tamano: "18-20 cm",
+    precio: "Desde $70.000",
+    descripcion: "Lionel Messi tejido a mano en crochet con los colores de Argentina. Incluye camiseta con el número 10 y detalles personalizados Perfecto para fanáticos del fútbol y coleccionistas.⚽💙🤍",
+    detalles: "Lionel Messi tejido a mano en crochet con los colores de Argentina. Incluye camiseta con el número 10 y detalles personalizados Perfecto para fanáticos del fútbol y coleccionistas.⚽💙🤍",
+    tamano: "13 cm",
     materiales: "Algodón, camiseta tejida con detalles bordados"
   },
   {
@@ -370,10 +350,9 @@ const todosLosProductos: Producto[] = [
     categoria: "Animales",
     imagen: "🦆🐸",
     imagenReal: "/productos/patito-gorro-sapito.jpg",
-    precio: "Desde $25.000",
-    descripcion: "Adorable patito amarillo con gorro de ranita",
-    detalles: "Combinación super tierna de un patito con gorro de rana. Los detalles del gorro incluyen ojitos y colores vibrantes. Perfecto para niños y amantes de los animales kawaii.",
-    tamano: "12-15 cm",
+    precio: "Desde $20.000",
+    descripcion: "Adorable llavero de patito tejido a crochet con gorro de ranita verde Expresión tierna y colores vibrantes. Tamaño perfecto para llaves o bolsos 🐸",
+    detalles: "Adorable llavero de patito tejido a crochet con gorro de ranita verde Expresión tierna y colores vibrantes. Tamaño perfecto para llaves o bolsos 🐸",
     materiales: "Algodón amarillo y verde, detalles bordados"
   },
   {
@@ -382,21 +361,21 @@ const todosLosProductos: Producto[] = [
     categoria: "Personajes",
     imagen: "🦙",
     imagenReal: "/productos/hero-2.jpg",
-    precio: "Desde $90.000",
-    descripcion: "Adorable personaje de anime con gorro.",
-    detalles: "Combinación super tierna de un personaje de anime con gorro. Los detalles del gorro incluyen ojitos y colores vibrantes. Perfecto para niños y amantes de los animales kawaii.",
-    tamano: "12-15 cm",
+    precio: "Desde $85.000",
+    descripcion: "Luffy de One Piece Incluye su icónico sombrero de paja, chaleco rojo y pantalón azul y todos sus detalles. Perfecto para fans del anime y coleccionistas.💛❤",
+    detalles: "Luffy de One Piece Incluye su icónico sombrero de paja, chaleco rojo y pantalón azul y todos sus detalles. Perfecto para fans del anime y coleccionistas.💛❤",
+    tamano: "15 cm",
     materiales: "Algodón amarillo y verde, detalles bordados"
   },
     {
     id: 37,
-    nombre: "Miniuns",
+    nombre: "Minions",
     categoria: "Personajes",
     imagen: "🌹",
     imagenReal: "/productos/hero-3.jpg",
     precio: "Desde $55.000",
-    descripcion: "Adorable personaje de la película Minions.",
-    detalles: "Combinación super tierna de un personaje de la película Minions. Los detalles incluyen ojitos y colores vibrantes. Perfecto para niños y amantes de los animales kawaii.",
+    descripcion: "Tierno minions tejido úsalo como llavero o decoración para tu espacio. Perfecto para fans de Mi Villano Favorito y coleccionistas. ❤",
+    detalles: "Tierno minions tejido úsalo como llavero o decoración para tu espacio. Perfecto para fans de Mi Villano Favorito y coleccionistas. ❤",
     tamano: "12-15 cm",
     materiales: "Algodón amarillo y verde, detalles bordados"
   }

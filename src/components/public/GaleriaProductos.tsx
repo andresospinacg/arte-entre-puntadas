@@ -25,7 +25,6 @@ const productosDestacados: Producto[] = [
     precio: "Desde $45.000",
     descripcion: "Amigurumi de galleta festival tejido a mano",
     detalles: "Llavero único inspirado en el famoso personaje de galleta. Perfecto para llevar contigo a todas partes. Cada pieza es hecha a mano con amor y dedicación.",
-    tamano: "8-10 cm",
     materiales: "Algodón 100%, relleno hipoalergénico"
   },
   {
@@ -47,9 +46,8 @@ const productosDestacados: Producto[] = [
     imagen: "🐝",
     imagenReal: "/productos/abeja-molly.jpg",
     precio: "Desde $15.000",
-    descripcion: "Hermosa abeja con detalles únicos",
-    detalles: "Pequeña abeja dulce perfecta como broche o decoración. Colores vibrantes y acabados impecables. Un regalo perfecto para los amantes de la naturaleza.",
-    tamano: "6-8 cm",
+    descripcion: "Adorable llavero de abejita con delicados detalles de rayas y alitas, tamaño perfecto para llaves o bolsos ✨",
+    detalles: "Adorable llavero de abejita con delicados detalles de rayas y alitas, tamaño perfecto para llaves o bolsos. ✨",
     materiales: "Hilo acrílico, fieltro para alas"
   },
   {
@@ -61,7 +59,7 @@ const productosDestacados: Producto[] = [
     precio: "Desde $85.000",
     descripcion: "Vincent van Gogh clásico perfecto para regalar",
     detalles: "Representación única del famoso pintor con todos sus detalles característicos. Perfecto para amantes del arte. Una pieza de conversación ideal para tu escritorio o estantería.",
-    tamano: "15-18 cm",
+    tamano: "15 cm",
     materiales: "Algodón, accesorios en fieltro"
   },
   {
@@ -85,7 +83,7 @@ const productosDestacados: Producto[] = [
     precio: "Desde $28.000",
     descripcion: "Hermosa rosa de Sherk con detalles únicos",
     detalles: "La icónica rosa de la película Shrek, tejida con amor. Un regalo romántico y divertido a la vez. Perfecta para los fans de la película.",
-    tamano: "20-25 cm con tallo",
+    tamano: "15 cm con tallo",
     materiales: "Algodón satinado, alambre para tallo"
   },
   {
@@ -179,9 +177,9 @@ const productosDestacados: Producto[] = [
     imagen: "🦙",
     imagenReal: "/productos/hero-2.jpg",
     precio: "Desde $90.000",
-    descripcion: "Adorable personaje de anime con gorro.",
-    detalles: "Combinación super tierna de un personaje de anime con gorro. Los detalles del gorro incluyen ojitos y colores vibrantes. Perfecto para niños y amantes de los animales kawaii.",
-    tamano: "12-15 cm",
+    descripcion: "Luffy de One Piece Incluye su icónico sombrero de paja, chaleco rojo y pantalón azul y todos sus detalles. Perfecto para fans del anime y coleccionistas.💛❤",
+    detalles: "Luffy de One Piece Incluye su icónico sombrero de paja, chaleco rojo y pantalón azul y todos sus detalles. Perfecto para fans del anime y coleccionistas.💛❤",
+    tamano: "15 cm",
     materiales: "Algodón amarillo y verde, detalles bordados"
   }
 
