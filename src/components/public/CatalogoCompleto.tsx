@@ -135,7 +135,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 17,
-    nombre: "Abuelo Personalizado",
+    nombre: "Personalizado",
     categoria: "Personalizados",
     imagen: "👴",
     imagenReal: "/productos/abuelo-personalizado.jpg",
@@ -147,7 +147,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 18,
-    nombre: "Hombre Personalizado",
+    nombre: "Personalizado",
     categoria: "Personalizados",
     imagen: "👨",
     imagenReal: "/productos/hombre-personalizado.jpg",
@@ -159,7 +159,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 19,
-    nombre: "Mujer Personalizada",
+    nombre: "Personalizada",
     categoria: "Personalizados",
     imagen: "👩",
     imagenReal: "/productos/mujer-personalizado.jpg",
@@ -171,7 +171,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 20,
-    nombre: "Joven Personalizado",
+    nombre: "Personalizado",
     categoria: "Personalizados",
     imagen: "🧑",
     imagenReal: "/productos/joven-personalizado.jpg",

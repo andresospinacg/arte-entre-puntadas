@@ -148,7 +148,7 @@ const productosDestacados: Producto[] = [
   },
   {
     id: 12,
-    nombre: "Tu Persona Favorita",
+    nombre: "Personalizada",
     categoria: "Personalizados",
     imagen: "✨",
     imagenReal: "/productos/mujer-personalizado.jpg",
@@ -160,7 +160,7 @@ const productosDestacados: Producto[] = [
   },
   {
     id: 13,
-    nombre: "Abuelo Personalizado",
+    nombre: "Personalizado",
     categoria: "Personalizados",
     imagen: "💑",
     imagenReal: "/productos/abuelo-personalizado.jpg",
