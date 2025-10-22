@@ -82,7 +82,7 @@ const productosDestacados: Producto[] = [
     categoria: "Accesorios",
     imagen: "🌹",
     imagenReal: "/productos/flor-sherk.jpg",
-    precio: "Desde $30.000",
+    precio: "Desde $28.000",
     descripcion: "Hermosa rosa de Sherk con detalles únicos",
     detalles: "La icónica rosa de la película Shrek, tejida con amor. Un regalo romántico y divertido a la vez. Perfecta para los fans de la película.",
     tamano: "20-25 cm con tallo",
@@ -171,7 +171,20 @@ const productosDestacados: Producto[] = [
     detalles: "Un regalo único para honrar a los abuelos. Creamos figuras personalizadas con sus características, ropa favorita y accesorios. El regalo perfecto para el Día de los Abuelos o cualquier ocasión especial.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
     tamano: "10 cm, 15 cm o 19 cm (a elegir)",
     materiales: "Algodón premium, detalles personalizados"
+  },
+  {
+    id: 14,
+    nombre: "Lyffy One Piece",
+    categoria: "Personajes",
+    imagen: "🦙",
+    imagenReal: "/productos/hero-2.jpg",
+    precio: "Desde $90.000",
+    descripcion: "Adorable personaje de anime con gorro.",
+    detalles: "Combinación super tierna de un personaje de anime con gorro. Los detalles del gorro incluyen ojitos y colores vibrantes. Perfecto para niños y amantes de los animales kawaii.",
+    tamano: "12-15 cm",
+    materiales: "Algodón amarillo y verde, detalles bordados"
   }
+
 ];
 
 // Componente Modal para mostrar detalles del producto
