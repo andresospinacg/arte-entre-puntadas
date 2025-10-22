@@ -1,5 +1,4 @@
-import { Instagram } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 
 export default function NavbarPublico() {
   return (
@@ -53,7 +52,7 @@ export default function NavbarPublico() {
               rel="noopener noreferrer"
               className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-dark-800 hover:bg-gradient-to-br hover:from-accent-400 hover:to-accent-500 rounded-lg transition-all duration-300 group"
             >
-              <Instagram className="w-4 h-4 text-dark-500 group-hover:text-white transition-colors" />
+              <FaInstagram className="w-4 h-4 text-dark-500 group-hover:text-white transition-colors" />
               <span className="text-sm text-dark-500 group-hover:text-white transition-colors">Instagram</span>
             </a>
             <a 

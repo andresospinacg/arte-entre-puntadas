@@ -5,7 +5,6 @@ import {
   crearMaterial,
   actualizarMaterial,
   eliminarMaterial as eliminarMaterialSupabase,
-  sincronizarMaterialesDesdeLocalStorage,
 } from '../../lib/materiales-service';
 
 interface Material {

@@ -1,4 +1,4 @@
-import { Heart, Star, Search, X, ShoppingCart } from 'lucide-react';
+import { Heart, Star, Search, X } from 'lucide-react';
 import { FaWhatsapp, FaHeart, FaInstagram } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 

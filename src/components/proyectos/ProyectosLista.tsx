@@ -4,7 +4,6 @@ import type { ResultadoCalculo } from '../../lib/calculos';
 import {
   obtenerProyectos,
   eliminarProyecto as eliminarProyectoSupabase,
-  sincronizarProyectosDesdeLocalStorage
 } from '../../lib/proyectos-service';
 
 interface Proyecto {
