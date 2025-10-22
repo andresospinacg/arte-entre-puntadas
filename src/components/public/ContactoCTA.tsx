@@ -1,5 +1,5 @@
-import { Instagram, Mail, MapPin } from 'lucide-react';
-import { FaWhatsapp, FaPalette, FaComments, FaBox } from 'react-icons/fa';
+import { MapPin } from 'lucide-react';
+import { FaWhatsapp, FaPalette, FaComments, FaBox, FaInstagram } from 'react-icons/fa';
 
 export default function ContactoCTA() {
   return (
@@ -31,7 +31,7 @@ export default function ContactoCTA() {
                     <span>Ibagué, Colombia</span>
                   </div>
                   <div className="flex items-center space-x-3 text-dark-500">
-                    <Instagram className="w-5 h-5 text-accent-400" />
+                    <FaInstagram className="w-5 h-5 text-accent-400" />
                     <a 
                       href="https://instagram.com/arte_entrepuntadas" 
                       target="_blank" 
@@ -60,7 +60,7 @@ export default function ContactoCTA() {
                     rel="noopener noreferrer"
                     className="btn-outline flex items-center justify-center space-x-2 group"
                   >
-                    <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <FaInstagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     <span>Instagram</span>
                   </a>
                 </div>

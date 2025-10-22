@@ -1,4 +1,5 @@
-import { Instagram, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
+import { FaInstagram } from 'react-icons/fa';
 import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer() {
@@ -33,7 +34,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-dark-800 hover:bg-gradient-to-br hover:from-accent-400 hover:to-accent-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
               >
-                <Instagram className="w-5 h-5 text-dark-500 group-hover:text-white transition-colors" />
+                <FaInstagram className="w-5 h-5 text-dark-500 group-hover:text-white transition-colors" />
               </a>
               <a 
                 href="https://wa.me/573133097012" 
@@ -83,9 +84,22 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-dark-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-dark-500 text-sm">
-            © {anoActual} Arte Entre Puntadas. Todos los derechos reservados.
-          </p>
+          <div className="flex flex-col items-center md:items-start space-y-2">
+            <p className="text-dark-500 text-sm">
+              © {anoActual} Arte Entre Puntadas. Todos los derechos reservados.
+            </p>
+            <p className="text-dark-600 text-xs">
+              Desarrollado por{' '}
+              <a 
+                href="https://www.andres-ospina.dev/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary-400 hover:text-primary-300 transition-colors"
+              >
+                Andrés Ospina
+              </a>
+            </p>
+          </div>
           <p className="text-dark-500 text-sm flex items-center space-x-1">
             <span>Hecho con</span>
             <Heart className="w-4 h-4 text-accent-400 fill-accent-400 animate-pulse" />

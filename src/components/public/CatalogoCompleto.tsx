@@ -1,5 +1,5 @@
-import { Heart, Star, Search, X, Instagram, ShoppingCart } from 'lucide-react';
-import { FaWhatsapp, FaHeart } from 'react-icons/fa';
+import { Heart, Star, Search, X, ShoppingCart } from 'lucide-react';
+import { FaWhatsapp, FaHeart, FaInstagram } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 interface Producto {
@@ -508,7 +508,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   rel="noopener noreferrer"
                   className="btn-secondary w-full flex items-center justify-center space-x-2"
                 >
-                  <Instagram className="w-5 h-5" />
+                  <FaInstagram className="w-5 h-5" />
                   <span>Ver más en Instagram</span>
                 </a>
               </div>
@@ -808,8 +808,8 @@ export default function CatalogoCompleto() {
                 rel="noopener noreferrer"
                 className="btn-secondary inline-flex items-center space-x-2"
               >
-                <Instagram className="w-5 h-5" />
-                <span>Seguir en Instagram</span>
+                <FaInstagram className="w-5 h-5" />
+                <span>Ver Instagram</span>
               </a>
             </div>
           </div>

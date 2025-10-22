@@ -1,5 +1,5 @@
-import { Heart, Star, X, Instagram } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { Heart, Star, X } from 'lucide-react';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import { useState } from 'react';
 
 interface Producto {
@@ -295,7 +295,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   rel="noopener noreferrer"
                   className="btn-secondary w-full flex items-center justify-center space-x-2"
                 >
-                  <Instagram className="w-5 h-5" />
+                  <FaInstagram className="w-5 h-5" />
                   <span>Ver más en Instagram</span>
                 </a>
               </div>
