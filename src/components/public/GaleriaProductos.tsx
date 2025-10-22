@@ -22,7 +22,7 @@ const productosDestacados: Producto[] = [
     categoria: "Accesorios",
     imagen: "🏴‍☠️",
     imagenReal: "/productos/llavero-galleta.jpg",
-    precio: "Desde $45.000",
+    precio: "Desde $15.000",
     descripcion: "Amigurumi de galleta festival tejido a mano",
     detalles: "Llavero único inspirado en el famoso personaje de galleta. Perfecto para llevar contigo a todas partes. Cada pieza es hecha a mano con amor y dedicación.",
     materiales: "Algodón 100%, relleno hipoalergénico"
@@ -41,7 +41,7 @@ const productosDestacados: Producto[] = [
   },
   {
     id: 3,
-    nombre: "Abeja Molly",
+    nombre: "Llavero Abeja",
     categoria: "Accesorios",
     imagen: "🐝",
     imagenReal: "/productos/abeja-molly.jpg",
@@ -93,14 +93,14 @@ const productosDestacados: Producto[] = [
     imagen: "📖",
     imagenReal: "/productos/separador-libros.jpg",
     precio: "Desde $17.000",
-    descripcion: "Separadores tejidos con diseños únicos",
-    detalles: "Colección de separadores con personajes adorables. Perfectos para los amantes de la lectura. Cada diseño es único y puede personalizarse.",
+    descripcion: "Separador con diseño de gato, perfecto para los amantes de la lectura y gaticos.",
+    detalles: "Separador con diseño de gato, perfecto para los amantes de la lectura y gaticos",
     tamano: "15-20 cm",
     materiales: "Algodón, cinta de satén"
   },
   {
     id: 8,
-    nombre: "Pollito Vaquero",
+    nombre: "Llavero Pollito",
     categoria: "Animales",
     imagen: "🐣",
     imagenReal: "/productos/pollito-sombrero-conejo.jpg",
@@ -140,10 +140,10 @@ const productosDestacados: Producto[] = [
     categoria: "Personalizados",
     imagen: "✨",
     imagenReal: "/productos/pollito-logo-empresa.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Tienes un negocio? ¡Haz que tu mascota sea única con nuestro servicio de personalización!",
-    detalles: "Creamos la mascota de tu empresa o negocio en amigurumi. Perfecto para eventos corporativos, merchandising o regalos empresariales. Incluye logo bordado o aplicado según diseño.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Creamos la mascota de tu empresa o negocio en amigurumi. Perfecto para eventos corporativos, merchandising o regalos empresariales. Incluye logo bordado o aplicado según diseño.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Materiales premium seleccionados según el proyecto"
   },
   {
@@ -152,10 +152,10 @@ const productosDestacados: Producto[] = [
     categoria: "Personalizados",
     imagen: "✨",
     imagenReal: "/productos/mujer-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Regala un recuerdo inolvidable con nuestras figuras personalizadas de personas",
-    detalles: "Creamos una figura personalizada de la persona que quieras inmortalizar. Ideal para regalos de cumpleaños, aniversarios o momentos especiales. Envianos una foto y recreamos cada detalle.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Creamos una figura personalizada de la persona que quieras inmortalizar. Ideal para regalos de cumpleaños, aniversarios o momentos especiales. Envianos una foto y recreamos cada detalle.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón premium, detalles personalizados según foto"
   },
   {
@@ -164,10 +164,10 @@ const productosDestacados: Producto[] = [
     categoria: "Personalizados",
     imagen: "💑",
     imagenReal: "/productos/abuelo-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Regala un recuerdo inolvidable con nuestras figuras personalizadas de abuelos",
-    detalles: "Un regalo único para honrar a los abuelos. Creamos figuras personalizadas con sus características, ropa favorita y accesorios. El regalo perfecto para el Día de los Abuelos o cualquier ocasión especial.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Un regalo único para honrar a los abuelos. Creamos figuras personalizadas con sus características, ropa favorita y accesorios. El regalo perfecto para el Día de los Abuelos o cualquier ocasión especial.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón premium, detalles personalizados"
   },
   {
@@ -181,6 +181,17 @@ const productosDestacados: Producto[] = [
     detalles: "Luffy de One Piece Incluye su icónico sombrero de paja, chaleco rojo y pantalón azul y todos sus detalles. Perfecto para fans del anime y coleccionistas.💛❤",
     tamano: "15 cm",
     materiales: "Algodón amarillo y verde, detalles bordados"
+  },
+  {
+    id: 15,
+    nombre: "Llavero Frailejón Ernesto Pérez",
+    categoria: "Personajes",
+    imagen: "🌿",
+    imagenReal: "/productos/frailejon-ernesto.jpg",
+    precio: "Desde $15.000",
+    descripcion: "El querido Frailejón Ernesto Pérez de los niños colombianos",
+    detalles: "¡El personaje más adorable de la televisión colombiana! Frailejón Ernesto Pérez tejido a mano con todos sus detalles característicos. Perfecto para niños y coleccionistas.",
+    materiales: "Algodón verde, fieltro, ojos de seguridad"
   }
 
 ];

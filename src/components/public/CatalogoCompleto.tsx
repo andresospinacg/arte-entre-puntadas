@@ -22,7 +22,7 @@ const todosLosProductos: Producto[] = [
     categoria: "Accesorios",
     imagen: "🏴‍☠️",
     imagenReal: "/productos/llavero-galleta.jpg",
-    precio: "Desde $45.000",
+    precio: "Desde $15.000",
     descripcion: "Amigurumi de galleta festival tejido a mano",
     detalles: "Llavero único inspirado en el famoso personaje de galleta. Perfecto para llevar contigo a todas partes.",
     materiales: "Algodón 100%, relleno hipoalergénico"
@@ -33,15 +33,15 @@ const todosLosProductos: Producto[] = [
     categoria: "Personajes",
     imagen: "🐧",
     imagenReal: "/productos/muneca.jpg",
-    precio: "Desde $150.000",
-    descripcion: "Adorable muñeca tejida a mano con detalles únicos",
-    detalles: "Muñeca clásica con vestido y accesorios personalizables. Ideal para coleccionar o regalar.",
+    precio: "Desde $120.000",
+    descripcion: "Hermosa muñeca Tamaño perfecto para abrazar y jugar. Ideal para niñas y bebés. ¡Un regalo tierno lleno de amor hecho a mano que será la compañera perfecta de aventuras!​​​​​​​​​​​​​​​🫶🏻",
+    detalles: "Hermosa muñeca Tamaño perfecto para abrazar y jugar. Ideal para niñas y bebés. ¡Un regalo tierno lleno de amor hecho a mano que será la compañera perfecta de aventuras!​​​​​​​​​​​​​​​​🫶🏻",
     tamano: "25-30 cm",
     materiales: "Algodón premium, ojos de seguridad, relleno antiestático"
   },
   {
     id: 3,
-    nombre: "Abeja Molly",
+    nombre: "Llavero Abeja",
     categoria: "Accesorios",
     imagen: "🐝",
     imagenReal: "/productos/abeja-molly.jpg",
@@ -100,7 +100,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 8,
-    nombre: "Pollito Vaquero",
+    nombre: "Llavero Pollito",
     categoria: "Animales",
     imagen: "🐣",
     imagenReal: "/productos/pollito-sombrero-conejo.jpg",
@@ -112,7 +112,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 15,
-    nombre: "Frailejón Ernesto Pérez",
+    nombre: "Llavero Frailejón Ernesto Pérez",
     categoria: "Personajes",
     imagen: "🌿",
     imagenReal: "/productos/frailejon-ernesto.jpg",
@@ -127,10 +127,10 @@ const todosLosProductos: Producto[] = [
     categoria: "Personalizados",
     imagen: "👩‍⚕️",
     imagenReal: "/productos/doctora-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Doctora personalizada con uniforme médico",
-    detalles: "Amigurumi personalizado de doctora o enfermera. Perfecto para regalar a profesionales de la salud o estudiantes de medicina. Se puede personalizar el color de piel, cabello y detalles del uniforme.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Amigurumi personalizado de doctora o enfermera. Perfecto para regalar a profesionales de la salud o estudiantes de medicina. Se puede personalizar el color de piel, cabello y detalles del uniforme.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón, uniforme tejido, accesorios médicos"
   },
   {
@@ -139,10 +139,10 @@ const todosLosProductos: Producto[] = [
     categoria: "Personalizados",
     imagen: "👴",
     imagenReal: "/productos/abuelo-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Regala un recuerdo inolvidable con nuestras figuras personalizadas de abuelos",
-    detalles: "Un regalo único para honrar a los abuelos. Creamos figuras personalizadas con sus características, ropa favorita y accesorios. El regalo perfecto para el Día de los Abuelos o cualquier ocasión especial.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Un regalo único para honrar a los abuelos. Creamos figuras personalizadas con sus características, ropa favorita y accesorios. El regalo perfecto para el Día de los Abuelos o cualquier ocasión especial.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón premium, detalles personalizados"
   },
   {
@@ -151,10 +151,10 @@ const todosLosProductos: Producto[] = [
     categoria: "Personalizados",
     imagen: "👨",
     imagenReal: "/productos/hombre-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Amigurumi personalizado de hombre según características",
-    detalles: "Crea un amigurumi único basado en una persona real. Personalizable: color de piel, cabello, barba, ropa, accesorios. Ideal para regalos especiales, aniversarios o simplemente sorprender.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Crea un amigurumi único basado en una persona real. Personalizable: color de piel, cabello, barba, ropa, accesorios. Ideal para regalos especiales, aniversarios o simplemente sorprender.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón, detalles bordados y tejidos"
   },
   {
@@ -163,10 +163,10 @@ const todosLosProductos: Producto[] = [
     categoria: "Personalizados",
     imagen: "👩",
     imagenReal: "/productos/mujer-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Amigurumi personalizado de mujer según características",
-    detalles: "Amigurumi femenino totalmente personalizable. Elige color de piel, estilo de cabello, vestimenta, accesorios y más. Perfecto para auto-regalos o sorprender a alguien especial.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Amigurumi femenino totalmente personalizable. Elige color de piel, estilo de cabello, vestimenta, accesorios y más. Perfecto para auto-regalos o sorprender a alguien especial.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón, detalles finos bordados"
   },
   {
@@ -175,15 +175,15 @@ const todosLosProductos: Producto[] = [
     categoria: "Personalizados",
     imagen: "🧑",
     imagenReal: "/productos/joven-personalizado.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Amigurumi juvenil personalizado con estilo moderno",
-    detalles: "Perfecto para adolescentes y jóvenes adultos. Personalizable con ropa casual moderna, accesorios como audífonos, mochilas, o elementos que representen sus hobbies.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Perfecto para adolescentes y jóvenes adultos. Personalizable con ropa casual moderna, accesorios como audífonos, mochilas, o elementos que representen sus hobbies.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Algodón, accesorios modernos tejidos"
   },
   {
     id: 21,
-    nombre: "Corazoncito Amigurumi",
+    nombre: "Llavero Corazoncito",
     categoria: "Accesorios",
     imagen: "❤️",
     imagenReal: "/productos/corazoncito.jpg",
@@ -194,7 +194,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 22,
-    nombre: "Cerezas Obsequio",
+    nombre: "Llavero Cerezas Obsequio",
     categoria: "Accesorios",
     imagen: "🍒",
     imagenReal: "/productos/cerezas-obsequio.jpg",
@@ -203,18 +203,6 @@ const todosLosProductos: Producto[] = [
     detalles: "Dos cerezas rojas unidas por su tallito verde tamaño perfecto para llaves o bolsos 🍒",
     tamano: "10-12 cm (par)",
     materiales: "Algodón rojo y verde, relleno suave"
-  },
-  {
-    id: 23,
-    nombre: "Bolso Negro de Trapillo",
-    categoria: "Accesorios",
-    imagen: "👜",
-    imagenReal: "/productos/bolso-negro-hecho-a-mano-trapillo.jpg",
-    precio: "Desde $120.000",
-    descripcion: "Bolso elegante tejido a mano en trapillo",
-    detalles: "Bolso funcional y resistente tejido en trapillo. Perfecto para uso diario, espacioso y con diseño moderno. Incluye asas resistentes y cierre seguro.",
-    tamano: "30x25 cm aprox",
-    materiales: "Trapillo de alta calidad, forro interno opcional"
   },
   {
     id: 24,
@@ -242,7 +230,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 26,
-    nombre: "Rosita Fresita",
+    nombre: "Llavero Rosita Fresita",
     categoria: "Personajes",
     imagen: "🍓",
     imagenReal: "/productos/rosita-fresita.jpg",
@@ -264,20 +252,8 @@ const todosLosProductos: Producto[] = [
     materiales: "Algodón verde, detalles en fieltro, argolla metálica"
   },
   {
-    id: 28,
-    nombre: "Ramo de Tulipanes con Abeja",
-    categoria: "Accesorios",
-    imagen: "🌷🐝",
-    imagenReal: "/productos/ramo-tulipan-abeja.jpg",
-    precio: "Desde $95.000",
-    descripcion: "Hermoso ramo de tulipanes tejidos con abejita",
-    detalles: "Ramo decorativo que nunca se marchita. Incluye varios tulipanes en colores vibrantes y una abejita posada. Perfecto para decoración permanente o regalo especial.",
-    tamano: "25-30 cm de alto",
-    materiales: "Algodón multicolor, tallos con alambre, maceta opcional"
-  },
-  {
     id: 29,
-    nombre: "Pollito Sombrero Vaquero",
+    nombre: "Llavero Pollito",
     categoria: "Animales",
     imagen: "🐤🤠",
     imagenReal: "/productos/pollito-sombrero-vaquero.jpg",
@@ -293,10 +269,10 @@ const todosLosProductos: Producto[] = [
     categoria: "Personalizados",
     imagen: "🐥💼",
     imagenReal: "/productos/pollito-logo-empresa.jpg",
-    precio: "Desde $80.000",
+    precio: "Desde $65.000",
     descripcion: "Tienes un negocio? ¡Haz que tu mascota sea única con nuestro servicio de personalización!",
-    detalles: "Creamos la mascota de tu empresa o negocio en amigurumi. Perfecto para eventos corporativos, merchandising o regalos empresariales. Incluye logo bordado o aplicado según diseño.\n\nPrecios según tamaño:\n• 10 cm: $80.000\n• 15 cm: $95.000\n• 19 cm: $128.000",
-    tamano: "10 cm, 15 cm o 19 cm (a elegir)",
+    detalles: "Creamos la mascota de tu empresa o negocio en amigurumi. Perfecto para eventos corporativos, merchandising o regalos empresariales. Incluye logo bordado o aplicado según diseño.\n\nPrecios según tamaño:\n• 10 cm: $65.000\n• 15 cm: $85.000\n• 20 cm: $100.000",
+    tamano: "10 cm, 15 cm o 20 cm (a elegir)",
     materiales: "Materiales premium seleccionados según el proyecto"
   },
   {
@@ -346,7 +322,7 @@ const todosLosProductos: Producto[] = [
   },
   {
     id: 35,
-    nombre: "Patito con Gorro de Sapito",
+    nombre: "Llavero Patito con Gorro de Sapito",
     categoria: "Animales",
     imagen: "🦆🐸",
     imagenReal: "/productos/patito-gorro-sapito.jpg",
@@ -378,6 +354,15 @@ const todosLosProductos: Producto[] = [
     detalles: "Tierno minions tejido úsalo como llavero o decoración para tu espacio. Perfecto para fans de Mi Villano Favorito y coleccionistas. ❤",
     tamano: "12-15 cm",
     materiales: "Algodón amarillo y verde, detalles bordados"
+  },
+  {id: 38,
+    nombre: "Llavero Pollito",
+    categoria: "Accesorios",
+    imagen: "🐤",
+    imagenReal: "/productos/llavero-pollito.jpg",
+    precio: "Desde $15.000",
+    descripcion: "Adorable llavero de pollito tamaño ideal para llaves y bolsos.",
+    materiales: "Adorable llavero de pollito tamaño ideal para llaves y bolsos."
   }
 ];
 
