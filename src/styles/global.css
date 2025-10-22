@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Importar fuentes de Google Fonts - Tipografía artesanal y amigable */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,13 +7,14 @@
 
 @layer base {
   :root {
-    --color-bg-primary: #0a0a0a;
-    --color-bg-secondary: #1a1a1a;
-    --color-text-primary: #fafafa;
-    --color-text-secondary: #a8a8a8;
-    --color-accent: #f97316;
-    --color-accent-hover: #fb923c;
-    --color-warm: #fbbf24;
+    --color-bg-primary: #09090B;
+    --color-bg-secondary: #18181B;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #A1A1AA;
+    --color-accent: #FF69B4; /* Rosa del logo */
+    --color-accent-hover: #F544A0;
+    --color-warm: #00CED1; /* Turquesa del logo */
+    --color-purple: #9B59D6; /* Morado del logo */
   }
   
   * {
@@ -26,7 +28,7 @@
   body {
     @apply bg-dark-950 text-white antialiased;
     @apply font-sans;
-    background: linear-gradient(to bottom, #0a0a0a 0%, #121212 100%);
+    background: linear-gradient(to bottom, #09090B 0%, #18181B 100%);
   }
   
   h1, h2, h3, h4, h5, h6 {

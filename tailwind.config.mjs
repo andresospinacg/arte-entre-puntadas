@@ -6,56 +6,72 @@ export default {
       colors: {
         // Paleta oscura
         dark: {
-          950: '#0a0a0a',
-          900: '#121212',
-          800: '#1a1a1a',
-          700: '#2a2a2a',
-          600: '#3a3a3a',
-          500: '#525252',
+          950: '#09090B',
+          900: '#18181B',
+          800: '#27272A',
+          700: '#3F3F46',
+          600: '#52525B',
+          500: '#71717A',
+          400: '#A1A1AA',
         },
-        // Colores cálidos principales (naranja/melocotón)
+        // Rosa principal (del logo - hilos y corazones)
         primary: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
+          50: '#FFF1F8',
+          100: '#FFE4F3',
+          200: '#FFC9E8',
+          300: '#FF9DD6',
+          400: '#FF69B4', // Rosa vibrante del logo
+          500: '#F544A0',
+          600: '#E02E8C',
+          700: '#C11D74',
+          800: '#A01960',
+          900: '#851852',
         },
-        // Acento rosa/fucsia cálido
+        // Morado/Púrpura (del logo - hilos)
         accent: {
-          50: '#fdf2f8',
-          100: '#fce7f3',
-          200: '#fbcfe8',
-          300: '#f9a8d4',
-          400: '#f472b6',
-          500: '#ec4899',
-          600: '#db2777',
-          700: '#be185d',
-          800: '#9f1239',
-          900: '#831843',
+          50: '#F5F3FF',
+          100: '#EDE9FE',
+          200: '#DDD6FE',
+          300: '#C4B5FD',
+          400: '#9B59D6', // Morado del logo
+          500: '#8B5CF6',
+          600: '#7C3AED',
+          700: '#6D28D9',
+          800: '#5B21B6',
+          900: '#4C1D95',
         },
-        // Amarillo cálido para highlights
+        // Turquesa/Cyan (del logo - hilos)
         warm: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          50: '#ECFEFF',
+          100: '#CFFAFE',
+          200: '#A5F3FC',
+          300: '#67E8F9',
+          400: '#00CED1', // Turquesa del logo
+          500: '#06B6D4',
+          600: '#0891B2',
+          700: '#0E7490',
+          800: '#155E75',
+          900: '#164E63',
+        },
+        // Beige/Crema (del logo - oveja y texto "Crochet")
+        cream: {
+          50: '#FEFDFB',
+          100: '#FDF9F3',
+          200: '#FAF3E7',
+          300: '#F5DEB3', // Beige crema del logo
+          400: '#E8C999',
+          500: '#D4A574',
+          600: '#C08552',
+          700: '#A06840',
+          800: '#7F5333',
+          900: '#5F3E27',
         },
       },
       fontFamily: {
-        sans: ['Inter var', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Cal Sans', 'Inter var', 'system-ui', 'sans-serif'],
+        // Tipografía más artesanal y amigable
+        sans: ['Quicksand', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Fredoka', 'Quicksand', 'system-ui', 'sans-serif'], // Más redondeada y amigable
+        handwriting: ['Caveat', 'cursive'], // Para detalles especiales
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       fontSize: {
@@ -75,13 +91,15 @@ export default {
         '2xl': '1.5rem',
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(249, 115, 22, 0.3)',
-        'glow-lg': '0 0 40px rgba(249, 115, 22, 0.4)',
-        'warm-glow': '0 0 30px rgba(251, 191, 36, 0.2)',
+        'glow': '0 0 20px rgba(255, 105, 180, 0.3)', // Rosa del logo
+        'glow-lg': '0 0 40px rgba(255, 105, 180, 0.4)',
+        'warm-glow': '0 0 30px rgba(155, 89, 214, 0.2)', // Morado del logo
+        'cyan-glow': '0 0 25px rgba(0, 206, 209, 0.3)', // Turquesa del logo
       },
       backgroundImage: {
-        'gradient-warm': 'linear-gradient(135deg, #f97316 0%, #ec4899 100%)',
-        'gradient-sunset': 'linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #ec4899 100%)',
+        'gradient-warm': 'linear-gradient(135deg, #FF69B4 0%, #9B59D6 100%)', // Rosa a Morado
+        'gradient-sunset': 'linear-gradient(135deg, #00CED1 0%, #9B59D6 50%, #FF69B4 100%)', // Turquesa-Morado-Rosa
+        'gradient-soft': 'linear-gradient(135deg, #F5DEB3 0%, #FFE4F3 100%)', // Crema a Rosa suave
       },
     },
   },
