@@ -33,9 +33,9 @@ const productosDestacados: Producto[] = [
     categoria: "Personajes",
     imagen: "🐧",
     imagenReal: "/productos/muneca.jpg",
-    precio: "Desde $150.000",
-    descripcion: "Adorable muñeca tejida a mano con detalles únicos",
-    detalles: "Muñeca clásica con vestido y accesorios personalizables. Ideal para coleccionar o regalar. Cada detalle está cuidadosamente elaborado para crear una pieza única.",
+    precio: "Desde $120.000",
+    descripcion: "Hermosa muñeca Tamaño perfecto para abrazar y jugar. Ideal para niñas y bebés. ¡Un regalo tierno lleno de amor hecho a mano que será la compañera perfecta de aventuras!​​​​​​​​​​​​​​​​ 🫶🏻",
+    detalles: "Hermosa muñeca Tamaño perfecto para abrazar y jugar. Ideal para niñas y bebés. ¡Un regalo tierno lleno de amor hecho a mano que será la compañera perfecta de aventuras!​​​​​​​​​​​​​​​​ 🫶🏻",
     tamano: "25-30 cm",
     materiales: "Algodón premium, ojos de seguridad, relleno antiestático"
   },
