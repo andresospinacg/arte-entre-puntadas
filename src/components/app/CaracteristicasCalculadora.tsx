@@ -51,26 +51,26 @@ export default function CaracteristicasCalculadora() {
   ];
 
   return (
-    <div id="caracteristicas" className="max-w-7xl mx-auto px-6 py-20">
-      <div className="text-center mb-16">
+    <div id="caracteristicas" className="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-cyan-50 via-purple-50 to-pink-50">
+      <div className="text-center mb-16 scroll-animate">
         <h2 className="section-title">
           <span className="gradient-text">Características</span> que te encantarán
         </h2>
-        <p className="text-xl text-dark-500 mt-4">
+        <p className="text-xl text-purple-700 mt-4">
           Todo lo que necesitas para gestionar tu negocio de amigurumis
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature, index) => (
-          <div key={index} className="card-hover group">
-            <div className={`w-12 h-12 bg-gradient-to-br ${feature.gradient} rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-200`}>
-              <svg className="w-6 h-6 text-dark-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div key={index} className="scroll-animate bg-white/80 backdrop-blur-sm border-2 border-purple-200 hover:border-pink-400 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group" style={{animationDelay: `${index * 100}ms`}}>
+            <div className={`w-12 h-12 bg-gradient-to-br ${feature.gradient} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-200`}>
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {feature.icon}
               </svg>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-white">{feature.title}</h3>
-            <p className="text-dark-500">
+            <h3 className="text-xl font-bold mb-3 text-purple-900">{feature.title}</h3>
+            <p className="text-purple-600">
               {feature.description}
             </p>
           </div>

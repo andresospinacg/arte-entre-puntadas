@@ -6,13 +6,13 @@ export default function Footer() {
   const anoActual = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark-950 border-t border-dark-800">
+    <footer className="bg-gradient-to-b from-purple-100 to-pink-100 border-t-2 border-pink-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo y descripción */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-accent-400 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-400 rounded-lg flex items-center justify-center shadow-lg">
                 <img 
                   src="/logo_navbar.png" 
                   alt="Arte Entre Puntadas" 
@@ -23,7 +23,7 @@ export default function Footer() {
                 Arte Entre Puntadas
               </span>
             </div>
-            <p className="text-dark-500 max-w-md">
+            <p className="text-purple-700 max-w-md">
               Creamos amigurumis únicos y personalizados con amor desde Ibagué, Colombia. 
               Cada puntada cuenta una historia especial.
             </p>
@@ -32,37 +32,37 @@ export default function Footer() {
                 href="https://instagram.com/arte_entrepuntadas" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 hover:bg-gradient-to-br hover:from-accent-400 hover:to-accent-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 bg-white hover:bg-gradient-to-br hover:from-purple-400 hover:to-purple-500 rounded-lg flex items-center justify-center transition-all duration-300 group shadow-md border-2 border-purple-200"
               >
-                <FaInstagram className="w-5 h-5 text-dark-500 group-hover:text-white transition-colors" />
+                <FaInstagram className="w-5 h-5 text-purple-500 group-hover:text-white transition-colors" />
               </a>
               <a 
                 href="https://wa.me/573133097012" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 hover:bg-gradient-to-br hover:from-primary-400 hover:to-primary-500 rounded-lg flex items-center justify-center transition-all duration-300 group"
+                className="w-10 h-10 bg-white hover:bg-gradient-to-br hover:from-pink-400 hover:to-pink-500 rounded-lg flex items-center justify-center transition-all duration-300 group shadow-md border-2 border-pink-200"
               >
-                <FaWhatsapp className="w-5 h-5 text-dark-500 group-hover:text-white transition-colors" />
+                <FaWhatsapp className="w-5 h-5 text-pink-500 group-hover:text-white transition-colors" />
               </a>
             </div>
           </div>
 
           {/* Enlaces rápidos */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Explorar</h3>
+            <h3 className="font-semibold text-purple-900 mb-4">Explorar</h3>
             <ul className="space-y-3">
               <li>
-                <a href="/" className="text-dark-500 hover:text-primary-400 transition-colors">
+                <a href="/" className="text-purple-600 hover:text-pink-500 transition-colors">
                   Inicio
                 </a>
               </li>
               <li>
-                <a href="/galeria" className="text-dark-500 hover:text-primary-400 transition-colors">
+                <a href="/galeria" className="text-purple-600 hover:text-pink-500 transition-colors">
                   Galería
                 </a>
               </li>
               <li>
-                <a href="/#contacto" className="text-dark-500 hover:text-primary-400 transition-colors">
+                <a href="/#contacto" className="text-purple-600 hover:text-pink-500 transition-colors">
                   Contacto
                 </a>
               </li>
@@ -71,10 +71,10 @@ export default function Footer() {
 
           {/* Para artesanos */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Para Artesanos</h3>
+            <h3 className="font-semibold text-purple-900 mb-4">Para Artesanos</h3>
             <ul className="space-y-3">
               <li>
-                <a href="/app" className="text-dark-500 hover:text-primary-400 transition-colors">
+                <a href="/app" className="text-purple-600 hover:text-pink-500 transition-colors">
                   Calculadora
                 </a>
               </li>
@@ -83,26 +83,26 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-dark-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="mt-12 pt-8 border-t-2 border-pink-200 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex flex-col items-center md:items-start space-y-2">
-            <p className="text-dark-500 text-sm">
+            <p className="text-purple-700 text-sm">
               © {anoActual} Arte Entre Puntadas. Todos los derechos reservados.
             </p>
-            <p className="text-dark-600 text-xs">
+            <p className="text-purple-600 text-xs">
               Desarrollado por{' '}
               <a 
                 href="https://www.andres-ospina.dev/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-primary-400 hover:text-primary-300 transition-colors"
+                className="text-pink-500 hover:text-pink-600 transition-colors font-medium"
               >
                 Andrés Ospina
               </a>
             </p>
           </div>
-          <p className="text-dark-500 text-sm flex items-center space-x-1">
+          <p className="text-purple-700 text-sm flex items-center space-x-1">
             <span>Hecho con</span>
-            <Heart className="w-4 h-4 text-accent-400 fill-accent-400 animate-pulse" />
+            <Heart className="w-4 h-4 text-pink-500 fill-pink-500 animate-pulse" />
             <span>en Ibagué, Colombia</span>
           </p>
         </div>

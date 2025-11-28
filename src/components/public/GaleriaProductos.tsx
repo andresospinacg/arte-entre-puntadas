@@ -205,28 +205,29 @@ interface ProductoModalProps {
 function ProductoModal({ producto, onClose }: ProductoModalProps) {
   return (
     <div 
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in-up"
       onClick={onClose}
     >
       <div 
-        className="bg-dark-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border-2 border-pink-200 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header del modal */}
-        <div className="sticky top-0 bg-dark-800 border-b border-dark-700 px-6 py-4 flex items-center justify-between z-10">
+        <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-b-2 border-pink-200 px-6 py-4 flex items-center justify-between rounded-t-3xl flex-shrink-0">
           <h2 className="text-2xl font-bold gradient-text">{producto.nombre}</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-dark-700 rounded-lg transition-colors"
+            className="p-2 hover:bg-pink-100 rounded-lg transition-colors text-purple-600"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div className="p-6">
+        {/* Contenido con scroll */}
+        <div className="p-6 overflow-y-auto flex-1" style={{scrollbarWidth: 'thin'}}>
           <div className="grid md:grid-cols-2 gap-8">
             {/* Imagen del producto */}
-            <div className="aspect-square bg-gradient-to-br from-primary-400/10 to-accent-400/10 rounded-xl overflow-hidden relative">
+            <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl overflow-hidden relative shadow-lg">
               {producto.imagenReal ? (
                 <img 
                   src={producto.imagenReal}
@@ -253,36 +254,36 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
             {/* Información del producto */}
             <div className="space-y-6">
               <div>
-                <span className="inline-block px-3 py-1 bg-primary-400/20 text-primary-400 rounded-full text-sm font-medium mb-4">
+                <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm font-medium mb-4">
                   {producto.categoria}
                 </span>
                 
                 <div className="flex items-center space-x-1 mb-4">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-5 h-5 text-warm-400 fill-warm-400" />
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                   ))}
-                  <span className="ml-2 text-dark-500 text-sm">(5.0)</span>
+                  <span className="ml-2 text-purple-600 text-sm font-medium">(5.0)</span>
                 </div>
 
-                <p className="text-3xl font-bold text-primary-400 mb-4">{producto.precio}</p>
+                <p className="text-3xl font-bold text-pink-600 mb-4">{producto.precio}</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-2">Descripción</h3>
-                <p className="text-dark-400">{producto.detalles || producto.descripcion}</p>
+                <h3 className="text-lg font-semibold text-purple-900 mb-2">Descripción</h3>
+                <p className="text-purple-700">{producto.detalles || producto.descripcion}</p>
               </div>
 
               {producto.tamano && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Tamaño aproximado</h3>
-                  <p className="text-dark-400">{producto.tamano}</p>
+                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Tamaño aproximado</h3>
+                  <p className="text-purple-700">{producto.tamano}</p>
                 </div>
               )}
 
               {producto.materiales && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Materiales</h3>
-                  <p className="text-dark-400">{producto.materiales}</p>
+                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Materiales</h3>
+                  <p className="text-purple-700">{producto.materiales}</p>
                 </div>
               )}
 
@@ -292,7 +293,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   href={`https://wa.me/573133097012?text=Hola!%20Me%20interesa%20el%20producto:%20${encodeURIComponent(producto.nombre)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary w-full flex items-center justify-center space-x-2"
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full flex items-center justify-center space-x-2 font-medium"
                 >
                   <FaWhatsapp className="w-5 h-5" />
                   <span>Hacer Pedido por WhatsApp</span>
@@ -302,7 +303,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   href="https://instagram.com/arte_entrepuntadas"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary w-full flex items-center justify-center space-x-2"
+                  className="bg-white border-2 border-purple-300 text-purple-700 px-6 py-3 rounded-full hover:bg-purple-50 hover:border-pink-400 transition-all duration-300 w-full flex items-center justify-center space-x-2 font-medium"
                 >
                   <FaInstagram className="w-5 h-5" />
                   <span>Ver más en Instagram</span>
@@ -310,7 +311,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
               </div>
 
               {/* Información adicional */}
-              <div className="bg-dark-700/50 rounded-lg p-4 space-y-2 text-sm text-dark-400">
+              <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-4 space-y-2 text-sm text-purple-700 border border-pink-200">
                 <p>✓ Hecho 100% a mano con amor</p>
                 <p>✓ Materiales de alta calidad</p>
                 <p>✓ Cada pieza es única</p>
@@ -335,14 +336,14 @@ export default function GaleriaProductos() {
     : productosDestacados.filter(p => p.categoria === categoriaActiva);
 
   return (
-    <section id="galeria" className="py-20 bg-dark-900">
+    <section id="galeria" className="scroll-anchor py-20 bg-gradient-to-b from-purple-50 to-pink-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 scroll-animate">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
             <span className="gradient-text">Nuestras Creaciones</span>
           </h2>
-          <p className="text-xl text-dark-500 max-w-2xl mx-auto">
+          <p className="text-xl text-purple-700 max-w-2xl mx-auto">
             Cada amigurumi es único y hecho con dedicación. Explora nuestra galería y encuentra el perfecto para ti.
           </p>
         </div>
@@ -353,10 +354,10 @@ export default function GaleriaProductos() {
             <button
               key={categoria}
               onClick={() => setCategoriaActiva(categoria)}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 border-2 ${
                 categoriaActiva === categoria
-                  ? 'bg-primary-400 text-dark-950'
-                  : 'bg-dark-800 text-dark-500 hover:text-white hover:bg-dark-700'
+                  ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white border-transparent shadow-lg scale-105'
+                  : 'bg-white text-purple-700 border-purple-300 hover:border-pink-400 hover:text-pink-600 hover:shadow-md hover:bg-pink-50'
               }`}
             >
               {categoria}
@@ -365,15 +366,16 @@ export default function GaleriaProductos() {
         </div>
 
         {/* Grid de productos */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {productosFiltrados.map(producto => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" key={categoriaActiva}>
+          {productosFiltrados.map((producto, index) => (
             <div 
               key={producto.id}
-              className="card-hover group cursor-pointer"
+              className="card-hover group cursor-pointer animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => setProductoSeleccionado(producto)}
             >
               {/* Imagen */}
-              <div className="aspect-square bg-gradient-to-br from-primary-400/10 to-accent-400/10 rounded-xl mb-4 overflow-hidden relative">
+              <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl mb-4 overflow-hidden relative">
                 {producto.imagenReal ? (
                   <img 
                     src={producto.imagenReal}
@@ -401,28 +403,28 @@ export default function GaleriaProductos() {
               {/* Info */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-primary-400 font-medium">{producto.categoria}</span>
+                  <span className="text-xs text-pink-500 font-medium bg-pink-100 px-2 py-1 rounded-full">{producto.categoria}</span>
                   <button 
-                    className="p-2 hover:bg-dark-700 rounded-lg transition-colors"
+                    className="p-2 hover:bg-pink-50 rounded-lg transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <Heart className="w-4 h-4 text-dark-500 hover:text-accent-400 hover:fill-accent-400 transition-colors" />
+                    <Heart className="w-4 h-4 text-purple-400 hover:text-pink-500 hover:fill-pink-500 transition-colors" />
                   </button>
                 </div>
 
-                <h3 className="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">
+                <h3 className="text-lg font-semibold text-purple-900 group-hover:text-pink-500 transition-colors">
                   {producto.nombre}
                 </h3>
 
-                <p className="text-sm text-dark-500 line-clamp-2">
+                <p className="text-sm text-purple-600 line-clamp-2">
                   {producto.descripcion}
                 </p>
 
                 <div className="flex items-center justify-between pt-2">
-                  <span className="text-primary-400 font-bold">{producto.precio}</span>
+                  <span className="text-pink-500 font-bold text-lg">{producto.precio}</span>
                   <div className="flex items-center space-x-1">
                     {[1,2,3,4,5].map(i => (
-                      <Star key={i} className="w-3 h-3 text-warm-400 fill-warm-400" />
+                      <Star key={i} className="w-3 h-3 text-yellow-400 fill-yellow-400" />
                     ))}
                   </div>
                 </div>
@@ -432,8 +434,8 @@ export default function GaleriaProductos() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <a href="/galeria" className="btn-secondary inline-flex items-center space-x-2">
+        <div className="text-center mt-12 scroll-animate">
+          <a href="/galeria" className="btn-secondary inline-flex items-center space-x-2 hover:scale-105 transition-transform">
             <span>Ver Catálogo Completo</span>
             <span>→</span>
           </a>

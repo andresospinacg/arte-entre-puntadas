@@ -374,27 +374,27 @@ interface ProductoModalProps {
 function ProductoModal({ producto, onClose }: ProductoModalProps) {
   return (
     <div 
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in-up"
       onClick={onClose}
     >
       <div 
-        className="bg-dark-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border-2 border-pink-200 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-dark-800 border-b border-dark-700 px-6 py-4 flex items-center justify-between z-10">
+        <div className="bg-gradient-to-r from-pink-50 to-purple-50 border-b-2 border-pink-200 px-6 py-4 flex items-center justify-between rounded-t-3xl flex-shrink-0">
           <h2 className="text-2xl font-bold gradient-text">{producto.nombre}</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-dark-700 rounded-lg transition-colors"
+            className="p-2 hover:bg-pink-100 rounded-lg transition-colors text-purple-600"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto flex-1" style={{scrollbarWidth: 'thin'}}>
           <div className="grid md:grid-cols-2 gap-8">
             {/* Imagen */}
-            <div className="aspect-square bg-gradient-to-br from-primary-400/10 to-accent-400/10 rounded-xl overflow-hidden relative">
+            <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl overflow-hidden relative shadow-lg">
               {producto.imagenReal ? (
                 <img 
                   src={producto.imagenReal}
@@ -421,36 +421,36 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
             {/* Detalles */}
             <div className="space-y-6">
               <div>
-                <span className="inline-block px-3 py-1 bg-primary-400/20 text-primary-400 rounded-full text-sm font-medium mb-4">
+                <span className="inline-block px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm font-medium mb-4">
                   {producto.categoria}
                 </span>
                 
                 <div className="flex items-center space-x-1 mb-4">
                   {[1,2,3,4,5].map(i => (
-                    <Star key={i} className="w-5 h-5 text-warm-400 fill-warm-400" />
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                   ))}
-                  <span className="ml-2 text-dark-500 text-sm">(5.0)</span>
+                  <span className="ml-2 text-purple-600 text-sm font-medium">(5.0)</span>
                 </div>
 
-                <p className="text-3xl font-bold text-primary-400 mb-4">{producto.precio}</p>
+                <p className="text-3xl font-bold text-pink-600 mb-4">{producto.precio}</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-2">Descripción</h3>
-                <p className="text-dark-400">{producto.detalles || producto.descripcion}</p>
+                <h3 className="text-lg font-semibold text-purple-900 mb-2">Descripción</h3>
+                <p className="text-purple-700">{producto.detalles || producto.descripcion}</p>
               </div>
 
               {producto.tamano && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Tamaño aproximado</h3>
-                  <p className="text-dark-400">{producto.tamano}</p>
+                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Tamaño aproximado</h3>
+                  <p className="text-purple-700">{producto.tamano}</p>
                 </div>
               )}
 
               {producto.materiales && (
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Materiales</h3>
-                  <p className="text-dark-400">{producto.materiales}</p>
+                  <h3 className="text-lg font-semibold text-purple-900 mb-2">Materiales</h3>
+                  <p className="text-purple-700">{producto.materiales}</p>
                 </div>
               )}
 
@@ -460,7 +460,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   href={`https://wa.me/573133097012?text=Hola!%20Me%20interesa%20el%20producto:%20${encodeURIComponent(producto.nombre)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary w-full flex items-center justify-center space-x-2"
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full flex items-center justify-center space-x-2 font-medium"
                 >
                   <FaWhatsapp className="w-5 h-5" />
                   <span>Hacer Pedido por WhatsApp</span>
@@ -470,7 +470,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                   href="https://instagram.com/arte_entrepuntadas"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary w-full flex items-center justify-center space-x-2"
+                  className="bg-white border-2 border-purple-300 text-purple-700 px-6 py-3 rounded-full hover:bg-purple-50 hover:border-pink-400 transition-all duration-300 w-full flex items-center justify-center space-x-2 font-medium"
                 >
                   <FaInstagram className="w-5 h-5" />
                   <span>Ver más en Instagram</span>
@@ -478,7 +478,7 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
               </div>
 
               {/* Info adicional */}
-              <div className="bg-dark-700/50 rounded-lg p-4 space-y-2 text-sm text-dark-400">
+              <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-4 space-y-2 text-sm text-purple-700 border border-pink-200">
                 <p>✓ Hecho 100% a mano con amor</p>
                 <p>✓ Materiales de alta calidad</p>
                 <p>✓ Cada pieza es única</p>
@@ -558,35 +558,35 @@ export default function CatalogoCompleto() {
 
   return (
     <>
-      <div className="min-h-screen bg-dark-900 pt-20 pb-12">
+      <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-cyan-50 pt-20 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 scroll-animate">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-4">
               <span className="gradient-text">Catálogo Completo</span>
             </h1>
-            <p className="text-xl text-dark-400 max-w-2xl mx-auto">
+            <p className="text-xl text-purple-700 max-w-2xl mx-auto">
               Explora toda nuestra colección de amigurumis hechos a mano con amor
             </p>
           </div>
 
           {/* Barra de búsqueda */}
-          <div className="mb-8">
+          <div className="mb-8 scroll-animate">
             <div className="relative max-w-xl mx-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-purple-400" />
               <input
                 type="text"
                 placeholder="Buscar productos..."
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-dark-800 border border-dark-700 rounded-xl text-white placeholder-dark-500 focus:outline-none focus:border-primary-400 transition-colors"
+                className="w-full pl-12 pr-4 py-4 bg-white border-2 border-purple-200 rounded-xl text-purple-900 placeholder-purple-400 focus:outline-none focus:border-pink-400 focus:ring-2 focus:ring-pink-200 transition-all shadow-sm"
               />
               {busqueda && (
                 <button
                   onClick={() => setBusqueda('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-dark-700 rounded transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-pink-100 rounded transition-colors"
                 >
-                  <X className="w-4 h-4 text-dark-500" />
+                  <X className="w-4 h-4 text-purple-500" />
                 </button>
               )}
             </div>
@@ -601,10 +601,10 @@ export default function CatalogoCompleto() {
                   setCategoriaActiva(categoria);
                   setMostrarSoloFavoritos(false);
                 }}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 border-2 ${
                   categoriaActiva === categoria && !mostrarSoloFavoritos
-                    ? 'bg-primary-400 text-dark-950'
-                    : 'bg-dark-800 text-dark-400 hover:text-white hover:bg-dark-700'
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white border-transparent shadow-lg scale-105'
+                    : 'bg-white text-purple-700 border-purple-300 hover:border-pink-400 hover:text-pink-600 hover:shadow-md hover:bg-white'
                 }`}
               >
                 {categoria}
@@ -620,10 +620,10 @@ export default function CatalogoCompleto() {
                     setCategoriaActiva('Todos');
                   }
                 }}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 border-2 ${
                   mostrarSoloFavoritos
-                    ? 'bg-accent-400 text-dark-950'
-                    : 'bg-dark-800 text-dark-400 hover:text-white hover:bg-dark-700'
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white border-transparent shadow-lg scale-105'
+                    : 'bg-white text-purple-700 border-purple-300 hover:border-pink-400 hover:text-pink-600 hover:shadow-md hover:bg-white'
                 }`}
               >
                 <Heart className={`w-4 h-4 ${mostrarSoloFavoritos ? 'fill-current' : ''}`} />
@@ -634,7 +634,7 @@ export default function CatalogoCompleto() {
 
           {/* Contador de resultados */}
           <div className="text-center mb-6">
-            <p className="text-dark-400">
+            <p className="text-purple-600 font-medium">
               {mostrarSoloFavoritos 
                 ? `${productosFiltrados.length} ${productosFiltrados.length === 1 ? 'favorito' : 'favoritos'}`
                 : `${productosFiltrados.length} ${productosFiltrados.length === 1 ? 'producto encontrado' : 'productos encontrados'}`
@@ -643,15 +643,16 @@ export default function CatalogoCompleto() {
           </div>
 
           {/* Grid de productos */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-            {productosFiltrados.map(producto => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12" key={`${categoriaActiva}-${mostrarSoloFavoritos}`}>
+            {productosFiltrados.map((producto, index) => (
               <div 
                 key={producto.id}
-                className="card-hover group cursor-pointer"
+                className="card-hover group cursor-pointer animate-fade-in-up"
+                style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => setProductoSeleccionado(producto)}
               >
                 {/* Imagen */}
-                <div className="aspect-square bg-gradient-to-br from-primary-400/10 to-accent-400/10 rounded-xl mb-4 overflow-hidden relative">
+                <div className="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl mb-4 overflow-hidden relative">
                   {producto.imagenReal ? (
                     <img 
                       src={producto.imagenReal}
@@ -678,9 +679,9 @@ export default function CatalogoCompleto() {
                 {/* Info */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-primary-400 font-medium">{producto.categoria}</span>
+                    <span className="text-xs text-pink-500 font-medium bg-pink-100 px-2 py-1 rounded-full">{producto.categoria}</span>
                     <button 
-                      className={`p-2 hover:bg-dark-700 rounded-lg transition-all ${
+                      className={`p-2 hover:bg-pink-50 rounded-lg transition-all ${
                         animatingHeart === producto.id ? 'scale-125' : 'scale-100'
                       }`}
                       onClick={(e) => {
@@ -692,26 +693,26 @@ export default function CatalogoCompleto() {
                       <Heart 
                         className={`w-4 h-4 transition-all duration-300 ${
                           favoritos.includes(producto.id)
-                            ? 'text-accent-400 fill-accent-400 scale-110'
-                            : 'text-dark-500 hover:text-accent-400'
+                            ? 'text-pink-500 fill-pink-500 scale-110'
+                            : 'text-purple-400 hover:text-pink-500'
                         }`}
                       />
                     </button>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">
+                  <h3 className="text-lg font-semibold text-purple-900 group-hover:text-pink-500 transition-colors">
                     {producto.nombre}
                   </h3>
 
-                  <p className="text-sm text-dark-400 line-clamp-2">
+                  <p className="text-sm text-purple-600 line-clamp-2">
                     {producto.descripcion}
                   </p>
 
                   <div className="flex items-center justify-between pt-2">
-                    <span className="text-primary-400 font-bold">{producto.precio}</span>
+                    <span className="text-pink-500 font-bold text-lg">{producto.precio}</span>
                     <div className="flex items-center space-x-1">
                       {[1,2,3,4,5].map(i => (
-                        <Star key={i} className="w-3 h-3 text-warm-400 fill-warm-400" />
+                        <Star key={i} className="w-3 h-3 text-yellow-400 fill-yellow-400" />
                       ))}
                     </div>
                   </div>
@@ -751,9 +752,9 @@ export default function CatalogoCompleto() {
           )}
 
           {/* CTA final */}
-          <div className="bg-gradient-to-r from-primary-400/10 to-accent-400/10 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">¿No encuentras lo que buscas?</h2>
-            <p className="text-dark-400 mb-6 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-r from-pink-100 via-purple-100 to-cyan-100 rounded-2xl p-8 md:p-12 text-center border-2 border-pink-200 shadow-xl scroll-animate">
+            <h2 className="text-3xl font-bold text-purple-900 mb-4">¿No encuentras lo que buscas?</h2>
+            <p className="text-purple-700 mb-6 max-w-2xl mx-auto text-lg">
               ¡Podemos crear cualquier diseño personalizado! Contáctanos y cuéntanos tu idea.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -784,16 +785,16 @@ export default function CatalogoCompleto() {
       {favoritos.length > 0 && !mostrarSoloFavoritos && (
         <button
           onClick={compartirFavoritos}
-          className="fixed bottom-8 right-8 bg-gradient-to-r from-accent-400 to-accent-500 text-dark-950 p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-40 group"
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-pink-400 to-purple-400 text-white p-4 rounded-full shadow-2xl hover:shadow-pink-300 transition-all duration-300 hover:scale-110 z-40 group border-2 border-white"
           title="Compartir mis favoritos por WhatsApp"
         >
           <div className="relative">
             <Heart className="w-6 h-6 fill-current" />
-            <span className="absolute -top-2 -right-2 bg-primary-400 text-dark-950 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 bg-white text-pink-500 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-pink-400">
               {favoritos.length}
             </span>
           </div>
-          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-dark-800 text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-purple-900 text-white px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
             Compartir favoritos
           </span>
         </button>

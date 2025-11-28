@@ -7,10 +7,10 @@
 
 @layer base {
   :root {
-    --color-bg-primary: #09090B;
-    --color-bg-secondary: #18181B;
-    --color-text-primary: #FFFFFF;
-    --color-text-secondary: #A1A1AA;
+    --color-bg-primary: #FFF9F0; /* Crema suave */
+    --color-bg-secondary: #FFF5E8; /* Crema más claro */
+    --color-text-primary: #2D1B3D; /* Morado oscuro para texto */
+    --color-text-secondary: #6B5B75; /* Morado medio */
     --color-accent: #FF69B4; /* Rosa del logo */
     --color-accent-hover: #F544A0;
     --color-warm: #00CED1; /* Turquesa del logo */
@@ -18,17 +18,26 @@
   }
   
   * {
-    @apply border-dark-700;
+    border-color: #E8D5F0;
   }
   
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
-    @apply bg-dark-950 text-white antialiased;
+    @apply antialiased;
     @apply font-sans;
-    background: linear-gradient(to bottom, #09090B 0%, #18181B 100%);
+    background: linear-gradient(135deg, #FFF9F0 0%, #FFE8F5 50%, #E8F5FF 100%);
+    color: #2D1B3D;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Optimización para scroll suave sin bugs */
+  * {
+    scroll-margin-top: 80px; /* Compensar altura del navbar */
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -37,57 +46,165 @@
 }
 
 @layer components {
+  /* Optimización general para transiciones fluidas */
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
   .btn-primary {
-    @apply px-6 py-3 bg-primary-400 hover:bg-primary-300 text-dark-950 font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-glow;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #FF69B4 0%, #F544A0 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 14px 0 rgba(255, 105, 180, 0.39);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-dark-700 hover:bg-dark-600 text-white font-semibold rounded-lg transition-all duration-200;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #9B59D6 0%, #8B5CF6 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 14px 0 rgba(155, 89, 214, 0.39);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .btn-outline {
-    @apply px-6 py-3 border-2 border-dark-600 hover:border-primary-400 hover:text-primary-400 text-white font-semibold rounded-lg transition-all duration-200;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #FF69B4;
+    color: #9B59D6;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-outline:hover {
+    background: linear-gradient(135deg, #FF69B4 0%, #9B59D6 100%);
+    color: white;
+    border-color: transparent;
   }
   
   .card {
-    @apply bg-dark-800 border border-dark-700 rounded-xl p-6 hover:border-dark-600 transition-all duration-200;
+    background: white;
+    border: 2px solid #FFE8F5;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(155, 89, 214, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card:hover {
+    border-color: #FFB3E0;
   }
   
   .card-hover {
-    @apply card hover:shadow-xl hover:-translate-y-1;
+    background: white;
+    border: 2px solid #FFE8F5;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(155, 89, 214, 0.1);
+    transform: translateZ(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 20px 25px -5px rgba(155, 89, 214, 0.2), 0 10px 10px -5px rgba(255, 105, 180, 0.1);
+    transform: translateY(-4px);
+    border-color: #FF69B4;
   }
   
   .input-field {
-    @apply w-full px-4 py-3 bg-dark-800 border border-dark-600 rounded-lg text-white placeholder-dark-500 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition-all duration-200;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: white;
+    border: 2px solid #E8D5F0;
+    border-radius: 0.5rem;
+    color: #2D1B3D;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .input-field::placeholder {
+    color: #B8A5C8;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #FF69B4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
   }
   
   .label {
-    @apply block text-sm font-medium text-dark-500 mb-2;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6B5B75;
+    margin-bottom: 0.5rem;
   }
   
   .section-title {
-    @apply text-4xl md:text-5xl font-display font-bold mb-4;
+    font-size: 2.25rem;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #2D1B3D;
+  }
+  
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 3rem;
+    }
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+    background: linear-gradient(135deg, #FF69B4 0%, #9B59D6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .nav-link {
-    @apply text-dark-500 hover:text-white transition-colors duration-200 font-medium;
+    color: #6B5B75;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .nav-link:hover {
+    color: #FF69B4;
   }
   
   .nav-link-active {
-    @apply text-primary-400;
+    color: #FF69B4;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Optimización de hardware acceleration */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Transiciones suaves personalizadas */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-smooth-slow {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .animation-delay-200 {
@@ -107,11 +224,11 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -124,36 +241,88 @@
   }
 }
 
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+/* Elementos que esperan ser animados al hacer scroll */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: none; /* Prevenir conflictos con otras transiciones */
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Scrollbar personalizado */
+/* Delays para animaciones escalonadas */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Scrollbar personalizado - tema claro y alegre */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #18181b;
+  background: #FFF5E8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
-  border-radius: 5px;
+  background: linear-gradient(180deg, #FF69B4 0%, #9B59D6 100%);
+  border-radius: 10px;
+  border: 2px solid #FFF5E8;
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: linear-gradient(180deg, #F544A0 0%, #8B5CF6 100%);
 }
 
-/* Efectos de glassmorphism */
+/* Optimización de rendimiento para animaciones */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Prevenir bugs de scroll en navegación */
+.scroll-anchor {
+  scroll-margin-top: 80px;
+  position: relative;
+}
+
+/* Efectos de glassmorphism - tema claro */
 .glass {
-  background: rgba(24, 24, 27, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(63, 63, 70, 0.3);
+  border: 1px solid rgba(255, 232, 245, 0.5);
+  box-shadow: 0 4px 6px rgba(155, 89, 214, 0.1);
 }

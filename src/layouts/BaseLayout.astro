@@ -55,5 +55,12 @@ const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
   <body>
     <slot />
+    
+    <script>
+      import { initScrollBehavior } from '../lib/smooth-scroll';
+      
+      // Inicializar comportamiento de scroll suave
+      initScrollBehavior();
+    </script>
   </body>
 </html>

@@ -47,7 +47,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-dark-700">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b-2 border-pink-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo y nombre */}
@@ -55,10 +55,10 @@ export default function Navbar() {
               <a href={logoHref} className="flex items-center space-x-3 group">
                 <div className="relative">
                   {/* Efecto de brillo detrás del logo */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 to-warm-400/20 blur-lg group-hover:from-primary-500/30 group-hover:to-warm-500/30 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 to-purple-400/30 blur-lg group-hover:from-pink-500/40 group-hover:to-purple-500/40 transition-all duration-300"></div>
                   
                   {/* Contenedor del logo - más cuadrado */}
-                  <div className="relative w-14 h-14 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:scale-105 group-hover:shadow-xl transition-all duration-300 p-2.5 border border-white/10 shadow-md">
+                  <div className="relative w-14 h-14 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:scale-105 group-hover:shadow-xl transition-all duration-300 p-2.5 border-2 border-pink-300 shadow-md">
                     <img 
                       src="/logo_navbar.png" 
                       alt="Arte Entre Puntadas" 
@@ -84,8 +84,8 @@ export default function Navbar() {
                     href={item.href}
                     className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                       isActive
-                        ? 'bg-dark-700 text-primary-400'
-                        : 'text-dark-500 hover:text-white hover:bg-dark-800'
+                        ? 'bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 border-2 border-pink-300'
+                        : 'text-purple-600 hover:text-pink-600 hover:bg-pink-50'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -103,7 +103,7 @@ export default function Navbar() {
             {/* Botón de menú móvil */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-dark-500 hover:text-white hover:bg-dark-800 transition-colors"
+              className="md:hidden p-2 rounded-lg text-purple-600 hover:text-pink-600 hover:bg-pink-50 transition-colors"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -112,7 +112,7 @@ export default function Navbar() {
 
         {/* Menú móvil */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-dark-700 bg-dark-900">
+          <div className="md:hidden border-t-2 border-pink-200 bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -123,8 +123,8 @@ export default function Navbar() {
                     href={item.href}
                     className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 ${
                       isActive
-                        ? 'bg-dark-700 text-primary-400'
-                        : 'text-dark-500 hover:text-white hover:bg-dark-800'
+                        ? 'bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 border-2 border-pink-300'
+                        : 'text-purple-600 hover:text-pink-600 hover:bg-pink-50'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -134,7 +134,7 @@ export default function Navbar() {
                 );
               })}
               {/* Menú de usuario en móvil */}
-              <div className="pt-3 border-t border-dark-700">
+              <div className="pt-3 border-t-2 border-pink-200">
                 <MenuUsuario onLoginClick={() => setLoginModalOpen(true)} />
               </div>
             </div>
