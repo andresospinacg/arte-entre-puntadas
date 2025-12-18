@@ -363,6 +363,78 @@ const todosLosProductos: Producto[] = [
     precio: "Desde $15.000",
     descripcion: "Adorable llavero de pollito tamaño ideal para llaves y bolsos.",
     materiales: "Adorable llavero de pollito tamaño ideal para llaves y bolsos."
+  },
+  {
+    id: 39,
+    nombre: "Abejita Mensajera",
+    categoria: "Bebés",
+    imagen: "🐝",
+    imagenReal: "/productos/Abejita.jpeg",
+    precio: "Desde $30.000",
+    descripcion: "Tierna abejita tejida a mano con bolsito azul, perfecta como regalo o decoración.",
+    detalles: "Adorable abejita amarilla con rayas negras y bolsito azul. Sus antenas y alitas están tejidas con detalle, y su expresión sonriente la hace irresistible. Ideal para regalar o decorar la habitación de los más pequeños.",
+    tamano: "12-15 cm",
+    materiales: "Algodón suave, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 40,
+    nombre: "Pareja de Conejitos",
+    categoria: "Bebés",
+    imagen: "🐰",
+    imagenReal: "/productos/Pareja _de_Conejitos.jpeg",
+    precio: "Desde $60.000",
+    descripcion: "Adorable pareja de conejitos tejidos a mano, ella con vestido rojo y él con overol azul.",
+    detalles: "Encantadora pareja de conejitos amigurumi, perfectos para decoración o regalo. La conejita luce un lindo vestido rojo, mientras que el conejito viste un overol azul con camiseta amarilla. Sus largas orejas y expresiones dulces los hacen irresistibles.",
+    tamano: "15-18 cm",
+    materiales: "Algodón de alta calidad, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 41,
+    nombre: "Pingüino Invernal",
+    categoria: "Bebés",
+    imagen: "🐧",
+    imagenReal: "/productos/Pinguino.jpeg",
+    precio: "Desde $70.000",
+    descripcion: "Tierno pingüino tejido a mano con gorro y bufanda, perfecto para regalo o decoración invernal.",
+    detalles: "Adorable pingüino amigurumi con cuerpo negro, pico amarillo y detalles en naranja. Luce un simpático gorro naranja con pompón y una bufanda verde que le dan un toque invernal. Sus mejillas rosadas y expresión dulce lo hacen un regalo perfecto para cualquier ocasión.",
+    tamano: "18-20 cm",
+    materiales: "Algodón premium, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 42,
+    nombre: "Chuyin",
+    categoria: "Personajes",
+    imagen: "👦",
+    imagenReal: "/productos/Chuyin.jpeg",
+    precio: "Desde $85.000",
+    descripcion: "Muñeco de Chuyin cantante tejido a mano, perfecto para fans de la música y el anime.",
+    detalles: "Figura amigurumi del cantante Chuyin, con su característico traje naranja y cabello rubio. Esta versión especial lo representa como artista musical. Perfecto para coleccionistas y fans de la música que buscan un regalo único y original.",
+    tamano: "20-22 cm",
+    materiales: "Algodón premium, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 43,
+    nombre: "Conejita Personalizada",
+    categoria: "Bebés",
+    imagen: "🐰",
+    imagenReal: "/productos/Coneja.jpeg",
+    precio: "Desde $65.000",
+    descripcion: "Tierna conejita personalizada con vestido rojo y nombre bordado, regalo perfecto para ocasiones especiales.",
+    detalles: "Adorable conejita amigurumi personalizada con vestido rojo y moño a juego. Incluye el nombre bordado en el vestido según tu preferencia. Sus largas orejas, mejillas rosadas y pestañas bordadas la hacen irresistible. Se puede personalizar con foto de referencia incluida como la muestra.",
+    tamano: "15-18 cm",
+    materiales: "Algodón de alta calidad, ojos de seguridad, relleno hipoalergénico, bordado personalizado"
+  },
+  {
+    id: 44,
+    nombre: "El Principito",
+    categoria: "Bebés",
+    imagen: "👑",
+    imagenReal: "/productos/El principito.jpeg",
+    precio: "Desde $75.000",
+    descripcion: "El Principito tejido a mano con su característica bufanda roja y cabello dorado, inspirado en el clásico literario.",
+    detalles: "Figura amigurumi del querido personaje El Principito, con su característico cabello rubio rizado, traje verde y bufanda roja. Perfecto para amantes de la literatura y coleccionistas. Cada detalle está cuidadosamente tejido para capturar la esencia de este icónico personaje.",
+    tamano: "18-20 cm",
+    materiales: "Algodón premium, ojos de seguridad, relleno hipoalergénico, detalles bordados"
   }
 ];
 
@@ -433,6 +505,11 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                 </div>
 
                 <p className="text-3xl font-bold text-pink-600 mb-4">{producto.precio}</p>
+                {producto.categoria === "Personalizados" && (
+                  <p className="text-sm italic text-purple-600 -mt-2 mb-4">
+                    *El precio puede variar dependiendo de los detalles y costos asociados a los materiales.
+                  </p>
+                )}
               </div>
 
               <div>
@@ -716,6 +793,11 @@ export default function CatalogoCompleto() {
                       ))}
                     </div>
                   </div>
+                  {producto.categoria === "Personalizados" && (
+                    <p className="text-xs italic text-purple-500 mt-1">
+                      *Precio variable según detalles y materiales
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

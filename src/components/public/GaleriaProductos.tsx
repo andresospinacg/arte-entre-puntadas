@@ -1,6 +1,6 @@
-import { Heart, Star, X } from 'lucide-react';
+import { Heart, Star, X, ChevronRight, Grid } from 'lucide-react';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Producto {
   id: number;
@@ -192,8 +192,67 @@ const productosDestacados: Producto[] = [
     descripcion: "El querido Frailejón Ernesto Pérez de los niños colombianos",
     detalles: "¡El personaje más adorable de la televisión colombiana! Frailejón Ernesto Pérez tejido a mano con todos sus detalles característicos. Perfecto para niños y coleccionistas.",
     materiales: "Algodón verde, fieltro, ojos de seguridad"
+  },
+  {
+    id: 39,
+    nombre: "Abejita Mensajera",
+    categoria: "Bebés",
+    imagen: "🐝",
+    imagenReal: "/productos/Abejita.jpeg",
+    precio: "Desde $30.000",
+    descripcion: "Tierna abejita tejida a mano con bolsito azul, perfecta como regalo o decoración.",
+    detalles: "Adorable abejita amarilla con rayas negras y bolsito azul. Sus antenas y alitas están tejidas con detalle, y su expresión sonriente la hace irresistible. Ideal para regalar o decorar la habitación de los más pequeños.",
+    tamano: "12-15 cm",
+    materiales: "Algodón suave, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 40,
+    nombre: "Pareja de Conejitos",
+    categoria: "Bebés",
+    imagen: "🐰",
+    imagenReal: "/productos/Pareja _de_Conejitos.jpeg",
+    precio: "Desde $60.000",
+    descripcion: "Adorable pareja de conejitos tejidos a mano, ella con vestido rojo y él con overol azul.",
+    detalles: "Encantadora pareja de conejitos amigurumi, perfectos para decoración o regalo. La conejita luce un lindo vestido rojo, mientras que el conejito viste un overol azul con camiseta amarilla. Sus largas orejas y expresiones dulces los hacen irresistibles.",
+    tamano: "15-18 cm",
+    materiales: "Algodón de alta calidad, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 41,
+    nombre: "Pingüino Invernal",
+    categoria: "Bebés",
+    imagen: "🐧",
+    imagenReal: "/productos/Pinguino.jpeg",
+    precio: "Desde $70.000",
+    descripcion: "Tierno pingüino tejido a mano con gorro y bufanda, perfecto para regalo o decoración invernal.",
+    detalles: "Adorable pingüino amigurumi con cuerpo negro, pico amarillo y detalles en naranja. Luce un simpático gorro naranja con pompón y una bufanda verde que le dan un toque invernal. Sus mejillas rosadas y expresión dulce lo hacen un regalo perfecto para cualquier ocasión.",
+    tamano: "18-20 cm",
+    materiales: "Algodón premium, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 42,
+    nombre: "Chuyin",
+    categoria: "Personajes",
+    imagen: "👦",
+    imagenReal: "/productos/Chuyin.jpeg",
+    precio: "Desde $85.000",
+    descripcion: "Muñeco de Chuyin cantante tejido a mano, perfecto para fans de la música y el anime.",
+    detalles: "Figura amigurumi del cantante Chuyin, con su característico traje naranja y cabello rubio. Esta versión especial lo representa como artista musical. Perfecto para coleccionistas y fans de la música que buscan un regalo único y original.",
+    tamano: "20-22 cm",
+    materiales: "Algodón premium, ojos de seguridad, relleno hipoalergénico"
+  },
+  {
+    id: 44,
+    nombre: "El Principito",
+    categoria: "Bebés",
+    imagen: "👑",
+    imagenReal: "/productos/El principito.jpeg",
+    precio: "Desde $75.000",
+    descripcion: "El Principito tejido a mano con su característica bufanda roja y cabello dorado, inspirado en el clásico literario.",
+    detalles: "Figura amigurumi del querido personaje El Principito, con su característico cabello rubio rizado, traje verde y bufanda roja. Perfecto para amantes de la literatura y coleccionistas. Cada detalle está cuidadosamente tejido para capturar la esencia de este icónico personaje.",
+    tamano: "18-20 cm",
+    materiales: "Algodón premium, ojos de seguridad, relleno hipoalergénico, detalles bordados"
   }
-
 ];
 
 // Componente Modal para mostrar detalles del producto
@@ -266,6 +325,11 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
                 </div>
 
                 <p className="text-3xl font-bold text-pink-600 mb-4">{producto.precio}</p>
+                {producto.categoria === "Personalizados" && (
+                  <p className="text-sm italic text-purple-600 -mt-2 mb-4">
+                    *El precio puede variar dependiendo de los detalles y costos asociados a los materiales.
+                  </p>
+                )}
               </div>
 
               <div>
@@ -328,6 +392,16 @@ function ProductoModal({ producto, onClose }: ProductoModalProps) {
 export default function GaleriaProductos() {
   const [categoriaActiva, setCategoriaActiva] = useState('Todos');
   const [productoSeleccionado, setProductoSeleccionado] = useState<Producto | null>(null);
+  const [showFloatingButton, setShowFloatingButton] = useState(false);
+
+  // Efecto para mostrar el botón flotante después de un tiempo
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowFloatingButton(true);
+    }, 1500); // Mostrar después de 1.5 segundos
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const categorias = ['Todos', 'Personajes', 'Animales', 'Bebés', 'Accesorios', 'Personalizados'];
 
@@ -428,6 +502,11 @@ export default function GaleriaProductos() {
                     ))}
                   </div>
                 </div>
+                {producto.categoria === "Personalizados" && (
+                  <p className="text-xs italic text-purple-500 mt-1">
+                    *Precio variable según detalles y materiales
+                  </p>
+                )}
               </div>
             </div>
           ))}
@@ -448,6 +527,19 @@ export default function GaleriaProductos() {
           producto={productoSeleccionado}
           onClose={() => setProductoSeleccionado(null)}
         />
+      )}
+
+      {/* Botón flotante para ver catálogo completo */}
+      {showFloatingButton && (
+        <a 
+          href="/galeria" 
+          className="fixed bottom-8 right-8 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-4 rounded-full shadow-2xl hover:shadow-pink-300/50 transition-all duration-300 hover:scale-110 z-40 flex items-center space-x-2 font-bold animate-bounce-slow animate-slide-in-right"
+        >
+          <Grid className="w-5 h-5" />
+          <span className="whitespace-nowrap">Ver Catálogo Completo</span>
+          <ChevronRight className="w-5 h-5" />
+          <div className="absolute inset-0 bg-white rounded-full animate-pulse opacity-20"></div>
+        </a>
       )}
     </section>
   );
